@@ -6,6 +6,10 @@
   </picture>
 </div>
 
+> **Experimental ROCm/Linux Docker fork:** Tested on the AMD Radeon AI PRO R9700 (`gfx1201`).
+> See the [ROCm validation summary](docs/rocm-validation-summary.md) for measured results,
+> the llama.cpp Vulkan comparison, and current limitations. [Docker setup](docs/docker-rocm.md).
+
 <p align="center">
 | <a href="https://www.flashml.ai/"><b>Download</b></a> | <a href="https://arxiv.org/abs/2608.16157"><b>Paper</b></a> | <a href="https://join.slack.com/t/flashml/shared_invite/zt-3zpdh5j10-9dwTXrgLiqpVxizhA9KVbA"><b>Developer Slack</b></a> | <a href="https://discord.gg/xzwSnMdsX"><b>Community Discord</b></a> | <a href="https://github.com/FlashML-org/FreeToken/blob/main/assets/freetoken-wechatgroup.png"><b>Community WeChat</b></a> |
 </p>

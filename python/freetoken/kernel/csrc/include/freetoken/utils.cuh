@@ -5,6 +5,10 @@
 #include <dlpack/dlpack.h>
 #include <tvm/ffi/extra/c_env_api.h>
 
+#if defined(__HIP_PLATFORM_AMD__)
+#include <freetoken/hip_compat.cuh>
+#endif
+
 #include <concepts>
 #include <cstddef>
 #include <source_location>
@@ -59,6 +63,14 @@ template <bool kUsePDL> __always_inline __device__ void launch() {
 } // namespace device
 
 namespace host {
+
+#if defined(__HIP_PLATFORM_AMD__)
+inline constexpr auto kDLGPU = kDLROCM;
+inline constexpr auto kDLGPUHost = kDLROCMHost;
+#else
+inline constexpr auto kDLGPU = kDLCUDA;
+inline constexpr auto kDLGPUHost = kDLCUDAHost;
+#endif
 
 inline auto
 CUDA_CHECK(::cudaError_t error,
@@ -115,6 +127,9 @@ public:
   }
 
   auto with_attr(bool use_pdl) -> LaunchKernel & {
+#if defined(__HIP_PLATFORM_AMD__)
+    RuntimeCheck(!use_pdl, "PDL is not supported on HIP");
+#else
     if (use_pdl) {
       m_attr_cache.id = ::cudaLaunchAttributeProgrammaticStreamSerialization;
       m_attr_cache.val.programmaticStreamSerializationAllowed = 1;
@@ -123,6 +138,7 @@ public:
     } else {
       m_config.numAttrs = 0;
     }
+#endif
     return *this;
   }
 

@@ -30,6 +30,10 @@ def _cuda_cflags(extra: List[str]) -> List[str]:
     PTX→SASS JIT (driver-only, no CUDA toolkit). One top PTX suffices: the loader always
     JIT-forwards from the highest compatible PTX. When the env is unset (runtime JIT), this is a
     no-op and tvm-ffi targets only the local GPU."""
+    from freetoken.utils.arch import is_rocm
+
+    if is_rocm():
+        return ["-std=c++20", "-O3"] + extra
     flags = DEFAULT_CUDA_CFLAGS + extra
     arch_list = os.getenv("TVM_FFI_CUDA_ARCH_LIST", "").split()
     if arch_list:

@@ -1,0 +1,78 @@
+{
+  "version": "0.4.0",
+  "timestamp": "2026-09-11 12:07:39Z",
+  "latency_mode": "generation",
+  "latency_ms": 298.19251759909093,
+  "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+  "prefix_caching_enabled": false,
+  "max_concurrency": 1,
+  "benchmarks": [
+    {
+      "concurrency": 1,
+      "context_size": 0,
+      "prompt_size": 512,
+      "response_size": 64,
+      "is_context_prefill_phase": false,
+      "pp_throughput": null,
+      "pp_req_throughput": null,
+      "tg_throughput": {
+        "mean": 20.753941356689992,
+        "std": 0.3527571568488135,
+        "values": [
+          20.40118419984118,
+          21.106698513538806
+        ]
+      },
+      "tg_req_throughput": {
+        "mean": 20.753941356689992,
+        "std": 0.3527571568488135,
+        "values": [
+          20.40118419984118,
+          21.106698513538806
+        ]
+      },
+      "peak_throughput": {
+        "mean": 21.5,
+        "std": 0.5,
+        "values": [
+          21.0,
+          22.0
+        ]
+      },
+      "peak_req_throughput": {
+        "mean": 21.5,
+        "std": 0.5,
+        "values": [
+          21.0,
+          22.0
+        ]
+      },
+      "ttfr": {
+        "mean": 2.9271754901856184,
+        "std": 0.1118204090744257,
+        "values": [
+          3.038995899260044,
+          2.8153550811111927
+        ]
+      },
+      "est_ppt": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0
+        ]
+      },
+      "e2e_ttft": {
+        "mean": 741.0067650489509,
+        "std": 32.534017926082015,
+        "values": [
+          773.5407829750329,
+          708.4727471228689
+        ]
+      },
+      "throughput_over_time": null,
+      "requests_throughput_over_time": null
+    }
+  ]
+}

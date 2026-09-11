@@ -396,6 +396,9 @@ def decode_paged_attention(
     # (e.g. 6), where block_h rounds up and the kernel masks the extra lanes.
     valid_block_h = min(16, group)
     block_h = triton.next_power_of_2(valid_block_h)
+    if torch.version.hip is not None:
+        # RDNA WMMA requires at least 16 rows, including for small GQA groups.
+        block_h = max(16, block_h)
     block_d = triton.next_power_of_2(head_dim)
     block_dv = triton.next_power_of_2(head_dim)
 

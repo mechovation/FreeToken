@@ -148,6 +148,12 @@ activemq-data/
 
 # Environments
 .env
+.env.*
+!.env.*.example
+archives/
+models/
+hf-cache/
+freetoken-cache/
 .envrc
 .venv
 env/

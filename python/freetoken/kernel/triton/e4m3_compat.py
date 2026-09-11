@@ -1,4 +1,4 @@
-"""e4m3 (fp8e4nv) emulation for pre-sm_89 CUDA GPUs.
+"""e4m3 (fp8e4nv) emulation for pre-sm_89 CUDA GPUs and ROCm.
 
 Triton rejects the fp8e4nv type anywhere in a kernel compiled for sm < 89 -- the
 check sits in ``dtype.to_ir``, so even an fp8 *pointer argument* is illegal.
@@ -57,7 +57,9 @@ def e4m3_native() -> bool:
             "the process starts (with its own TRITON_CACHE_DIR)"
         )
     if _native is None:
-        if FORCE_EMU:
+        # Keep the host pointer convention aligned with the CUDA-only target
+        # predicate in e4m3_native_cx; AMD capability numbers are not NVIDIA SMs.
+        if FORCE_EMU or torch.version.hip is not None:
             _native = False
         else:
             native = {torch.cuda.get_device_capability(i) >= (8, 9)

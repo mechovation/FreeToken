@@ -4,6 +4,12 @@ import functools
 from typing import Tuple
 
 
+def is_rocm() -> bool:
+    import torch
+
+    return torch.version.hip is not None
+
+
 @functools.cache
 def _get_torch_cuda_version() -> Tuple[int, int] | None:
     import torch

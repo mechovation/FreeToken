@@ -4,10 +4,12 @@ import importlib.util
 from pathlib import Path
 
 from setuptools import setup
-from torch.utils.cpp_extension import BuildExtension, CUDA_HOME, CppExtension
+import torch
+from torch.utils.cpp_extension import BuildExtension, CUDA_HOME, ROCM_HOME, CppExtension
 
 
 ROOT = Path(__file__).parent
+IS_ROCM = torch.version.hip is not None
 
 
 def _check_toolchain() -> None:
@@ -19,6 +21,10 @@ def _check_toolchain() -> None:
 
 
 def _cuda_runtime_paths() -> tuple[list[str], list[str]]:
+    if IS_ROCM:
+        if ROCM_HOME is None:
+            raise RuntimeError("ROCM_HOME is required to build FreeToken's HIP extensions.")
+        return [str(Path(ROCM_HOME) / "include")], [str(Path(ROCM_HOME) / "lib")]
     if CUDA_HOME is None:
         raise RuntimeError(
             "CUDA_HOME is required to build freetoken.kernel._pinned_tensor "
@@ -32,6 +38,9 @@ def _cuda_runtime_paths() -> tuple[list[str], list[str]]:
 
 
 cuda_include_dirs, cuda_library_dirs = _cuda_runtime_paths()
+cuda_include_dirs.append(str(ROOT / "python/freetoken/kernel/csrc/include"))
+runtime_libraries = ["amdhip64" if IS_ROCM else "cudart"]
+runtime_macros = [("FREETOKEN_USE_ROCM", "1"), ("__HIP_PLATFORM_AMD__", "1")] if IS_ROCM else []
 _check_toolchain()
 
 
@@ -44,7 +53,8 @@ setup(
             ],
             include_dirs=cuda_include_dirs,
             library_dirs=cuda_library_dirs,
-            libraries=["cudart"],
+            libraries=runtime_libraries,
+            define_macros=runtime_macros,
             extra_compile_args=["-O3", "-std=c++17"],
         ),
         # CPU-compute MoE executor for --moe-backend cpu. Links cudart for the
@@ -59,7 +69,8 @@ setup(
             ],
             include_dirs=cuda_include_dirs,
             library_dirs=cuda_library_dirs,
-            libraries=["cudart"],
+            libraries=runtime_libraries,
+            define_macros=runtime_macros,
             extra_compile_args=["-O3", "-std=c++17", "-pthread"],
         ),
     ],

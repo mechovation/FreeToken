@@ -57,7 +57,8 @@ dependencies = [
     "torch>=2.11,<2.12",
     "tqdm>=4.66,<5",
     "transformers>=5.5,<6",
-    "triton==3.6.0; platform_system == 'Linux'",
+    # torch supplies the matching Triton distribution: triton on CUDA,
+    # triton-rocm on ROCm. Installing both overwrites the same module.
     "uvicorn>=0.30,<1",
 ]
 

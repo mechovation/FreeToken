@@ -23,11 +23,19 @@ def _importable(name: str) -> bool:
 
 @functools.cache
 def is_flashinfer_installed() -> bool:
+    from freetoken.utils.arch import is_rocm
+
+    if is_rocm():
+        return False
     return _importable("flashinfer")
 
 
 @functools.cache
 def is_sgl_kernel_installed() -> bool:
+    from freetoken.utils.arch import is_rocm
+
+    if is_rocm():
+        return False
     return _importable("sgl_kernel")
 
 

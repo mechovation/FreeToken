@@ -29,7 +29,7 @@
 #include <thread>
 #include <vector>
 
-#include <cuda_runtime_api.h>
+#include <freetoken/runtime_compat.h>
 #include <torch/extension.h>
 
 #if defined(__linux__)
@@ -576,9 +576,14 @@ static void* cumemop_dlsym(void* h, const char* n) {
 #else
 #include <dlfcn.h>
 static void* cumemop_dlopen() {
+#if defined(FREETOKEN_USE_ROCM)
+  // A mixed-vendor host may expose libcuda; its streams cannot accept HIP handles.
+  return nullptr;
+#else
   void* h = dlopen("libcuda.so.1", RTLD_LAZY | RTLD_LOCAL);
   if (h == nullptr) h = dlopen("libcuda.so", RTLD_LAZY | RTLD_LOCAL);
   return h;
+#endif
 }
 static void* cumemop_dlsym(void* h, const char* n) { return dlsym(h, n); }
 #endif

@@ -1,0 +1,49 @@
+ARG ROCM_IMAGE=rocm/pytorch:rocm7.2.2_ubuntu24.04_py3.12_pytorch_release_2.10.0
+ARG ROCM_DEPS_IMAGE=rocm-deps
+FROM ${ROCM_IMAGE} AS rocm-deps
+
+ENV PYTHONUNBUFFERED=1 \
+    ROCM_HOME=/opt/rocm \
+    HIP_PATH=/opt/rocm \
+    CXX=/opt/rocm/llvm/bin/clang++ \
+    PYTORCH_ROCM_ARCH=gfx1201 \
+    TVM_FFI_ROCM_ARCH_LIST=gfx1201 \
+    MAX_JOBS=2 \
+    FREETOKEN_DISABLE_KERNEL_CACHE=1 \
+    HF_HOME=/root/.cache/huggingface \
+    MODEL_PATH=Qwen/Qwen3-0.6B \
+    SERVED_MODEL_NAME=Qwen3-0.6B \
+    MOE_BACKEND=fused \
+    PATH=/opt/freetoken-venv/bin:/opt/rocm/bin:${PATH}
+
+# Keep the ROCm 2.11 wheel and its Triton provider separate from the base image.
+RUN python3 -m venv /opt/freetoken-venv \
+    && python -m pip install --no-cache-dir --upgrade pip "setuptools>=77" wheel ninja \
+    && python -m pip install --no-cache-dir torch==2.11.0 \
+       --index-url https://download.pytorch.org/whl/rocm7.2
+
+WORKDIR /workspace/FreeToken
+COPY scripts/prepare-rocm-flashlib.py /opt/prepare-rocm-flashlib.py
+RUN --mount=type=cache,id=freetoken-rocm-pip,target=/root/.cache/pip \
+    python /opt/prepare-rocm-flashlib.py /opt/freetoken-wheels \
+    && python -m pip install --no-deps /opt/freetoken-wheels/flashlib-0.3.0+rocm-py3-none-any.whl
+COPY pyproject.toml ./
+RUN --mount=type=cache,id=freetoken-rocm-pip,target=/root/.cache/pip \
+    python -c 'import subprocess,sys,tomllib; deps=tomllib.load(open("pyproject.toml","rb"))["project"]["dependencies"]; subprocess.check_call([sys.executable,"-m","pip","install",*deps])' \
+    && python -m pip freeze > /opt/freetoken-wheels/requirements.lock \
+    && python -m pip check
+
+FROM ${ROCM_DEPS_IMAGE} AS runtime
+COPY setup.py README.md LICENSE ./
+COPY python ./python
+RUN python -m pip install --no-cache-dir --no-build-isolation --no-deps . \
+    && python -m pip check \
+    && python -c 'import torch,triton; assert torch.version.hip and triton.__version__ == "3.6.0"; from freetoken.kernel import _pinned_tensor, _cpu_moe; print(torch.__version__, torch.version.hip, triton.__version__)'
+
+COPY docker/entrypoint.sh /usr/local/bin/freetoken-entrypoint
+COPY scripts/rocm-smoke.py /usr/local/bin/freetoken-rocm-smoke
+RUN chmod +x /usr/local/bin/freetoken-entrypoint
+
+EXPOSE 1919
+ENTRYPOINT ["freetoken-entrypoint"]
+CMD ["serve", "--attention-backend", "triton", "--num-pages", "4096", "--cuda-graph-max-bs", "0"]

@@ -1,0 +1,7 @@
+# Reuse the locally validated ROCm stack and preserve the original image tag.
+FROM freetoken:rocm-gfx1201
+COPY python/freetoken/ /opt/freetoken-venv/lib/python3.12/site-packages/freetoken/
+COPY scripts/rocm-graph-smoke.py /usr/local/bin/freetoken-rocm-graph-smoke
+# The old volume contains JIT variants compiled before the HIP header changes.
+# TVM's inline-source cache key does not account for included header contents.
+ENV TVM_FFI_CACHE_DIR=/root/.cache/tvm-ffi-hip-graphs-v1

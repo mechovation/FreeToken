@@ -1,0 +1,130 @@
+# Default deployment: Qwen3.6 35B NVFP4 on the AMD R9700 (ROCm/HIP).
+# Start: docker compose up -d freetoken-rocm
+# Check settings without starting: docker compose config
+# Stop llama-swap before loading this model; both services use the R9700.
+# The previous NVIDIA configuration is preserved in compose.nvidia.backup.
+#
+# Settings use ${ROCM_SETTING:-default}: a nonempty shell variable overrides
+# .env, and .env overrides the default written here. Use ROCM_* names in .env;
+# the old NVIDIA MODEL_PATH, MEMORY_RATIO, etc. do not affect this service.
+# Optional explicit env file: docker compose --env-file .env.rocm.example up -d
+services:
+  freetoken-rocm:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.rocm
+      args:
+        # Build-time only. Changing this does not change an existing image.
+        # Dockerfile.rocm also pins the PyTorch/Triton stack to ROCm 7.2.
+        ROCM_IMAGE: ${ROCM_IMAGE:-rocm/pytorch:rocm7.2.2_ubuntu24.04_py3.12_pytorch_release_2.10.0}
+        # Default: cached dependency stage. Set to freetoken:rocm-deps to use
+        # the saved dependency image; see scripts/archive-rocm-assets.sh.
+        ROCM_DEPS_IMAGE: ${ROCM_DEPS_IMAGE:-rocm-deps}
+    image: ${ROCM_RUNTIME_IMAGE:-freetoken:rocm-hip-graphs}
+    container_name: freetoken-rocm
+    # AMD device access only; no NVIDIA runtime or `gpus: all` request.
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    # Shared-memory capacity, not a reservation of VRAM or a host RAM limit.
+    shm_size: 4gb
+    ports:
+      # Host bind address and port; the container always listens on 1919.
+      # 127.0.0.1 is local-only. 0.0.0.0 exposes the API on all IPv4 interfaces.
+      # There is no API authentication by default; protect remote access.
+      - "${ROCM_BIND_ADDRESS:-127.0.0.1}:${ROCM_PORT:-1920}:1919"
+    environment:
+      # Index in HIP's AMD device list, not an NVIDIA/nvidia-smi device index.
+      # 0 selects this server's R9700. This deployment is tested on one GPU.
+      HIP_VISIBLE_DEVICES: "${ROCM_DEVICE:-0}"
+
+      # Hugging Face repository ID, or a model directory inside the container
+      # such as /models/my-checkpoint. The nvidia/ prefix is the checkpoint's
+      # publisher, not a request to use an NVIDIA GPU. This is not a GGUF loader.
+      MODEL_PATH: "${ROCM_MODEL:-nvidia/Qwen3.6-35B-A3B-NVFP4}"
+      # Public model identifier returned by /v1/models and used by API clients.
+      # Changing the alias does not change which weights are loaded.
+      SERVED_MODEL_NAME: "${ROCM_MODEL_NAME:-Qwen3.6-35B-A3B-NVFP4}"
+
+      # Fraction of free VRAM measured before model loading budgeted for
+      # weights + expert cache + KV cache. 0.85 leaves 15% runtime headroom.
+      # Higher values allow more cache but increase OOM risk; this is not an
+      # expert-cache percentage and does not restrict system RAM usage.
+      MEMORY_RATIO: "${ROCM_MEMORY_RATIO:-0.85}"
+
+      # Maximum simultaneous active requests, not the number of API clients
+      # or a context length. Extra requests queue. Increasing this also needs
+      # KV capacity and per-request recurrent state. Graphs 1 and 2 are validated.
+      MAX_RUNNING_REQUESTS: "${ROCM_MAX_REQUESTS:-2}"
+
+      # Maximum tokens processed in one chunked-prefill step. Larger chunks
+      # may improve prompt processing but need more temporary VRAM. 2048 is
+      # the tested setting; a 128K prompt can still be processed in chunks.
+      # This does NOT cap the prompt length or the model's context window.
+      MAX_PREFILL_LENGTH: "${ROCM_PREFILL_LENGTH:-2048}"
+
+      # Minimum SHARED KV token capacity reserved before auto-sizing experts.
+      # Not a per-request partition or a hard context cap; leftover VRAM can
+      # yield more KV capacity. A higher floor leaves less room for experts.
+      # Budget prompt + generated tokens across all simultaneous requests:
+      #   1 x 128K = 131072; 3 x 128K = 393216; 3 x 256K = 786432 tokens.
+      # For this checkpoint's BF16 KV these cost about 2.5 / 7.5 / 15 GiB,
+      # excluding recurrent state, weights, expert cache and runtime workspace.
+      # Concurrency is set separately above; 3 full 256K contexts were not tested.
+      # This checkout has no Q8 KV option. NVFP4 describes weights, not KV dtype.
+      KV_RESERVE_TOKENS: "${ROCM_KV_RESERVE_TOKENS:-65536}"
+
+      # offload: keep expert banks in host RAM and cache/compute experts on GPU.
+      # This is the validated NVFP4 path; allow roughly 20 GiB of host RAM for
+      # expert banks alone, plus loading overhead and other service allocations.
+      # fused: resident GPU experts; NOT supported for this NVFP4 checkpoint.
+      # cpu / hybrid: CPU expert computation / mixed CPU+GPU; not validated as
+      # full-model serving configurations here. auto may select offload/hybrid
+      # from a bandwidth profile; explicit offload keeps this baseline repeatable.
+      MOE_BACKEND: "${ROCM_MOE_BACKEND:-offload}"
+
+      # NVFP4 expert math implementation. Keep triton on AMD; marlin and
+      # flashinfer are NVIDIA-specific paths, not ROCm alternatives.
+      NVFP4_BACKEND: "${ROCM_NVFP4_BACKEND:-triton}"
+
+      # Container cache location; change ROCM_HF_CACHE in the volume below to
+      # choose the HOST directory. Keeping this bind mount reuses model weights.
+      HF_HOME: /root/.cache/huggingface
+      # 0 permits Hub metadata checks and downloads of missing files.
+      # 1 uses cached files only and fails if required assets are missing.
+      HF_HUB_OFFLINE: "${ROCM_HF_OFFLINE:-0}"
+      # Separate JIT namespace from kernels compiled before the HIP header port.
+      TVM_FFI_CACHE_DIR: /root/.cache/tvm-ffi-hip-graphs-v1
+
+      # Extra ft serve flags, split on whitespace by docker/entrypoint.sh.
+      # Example: --expert-load serial (lower peak RAM during expert loading).
+      # Quoted values containing spaces are not supported in this string.
+      # Do not add --moe-cache-size/rate while --moe-cache-auto is in command;
+      # they are mutually exclusive. Explicit command flags below take precedence
+      # over duplicate scalar flags here. Prefer the dedicated ROCM_* settings.
+      FT_EXTRA_ARGS: "${ROCM_EXTRA_ARGS:-}"
+    volumes:
+      # Optional unpacked checkpoints addressed through /models/..., read-only.
+      - ${ROCM_MODELS_DIR:-./models}:/models:ro
+      # Reuse the host's existing Hugging Face cache, including downloaded 35B
+      # weights. A different/empty directory can trigger a fresh model download.
+      - ${ROCM_HF_CACHE:-${HOME}/.cache/huggingface}:/root/.cache/huggingface
+      # Persistent compiled-kernel caches survive container recreation/rebuilds.
+      # The more-specific Hugging Face bind above stays separate from this volume.
+      # Do not use `docker compose down -v` unless you intend to discard caches.
+      - rocm-kernels:/root/.cache
+    # Triton attention + automatic expert/KV sizing is the validated 35B setup.
+    # No fixed --num-pages limit: the old 4096-page setting was for a small model.
+    # ROCM_GRAPH_MAX_BS=0 disables capture. Positive values set the maximum graph
+    # batch size. Sizes 1 and 2 are validated for this NVFP4 model on the R9700.
+    # The CLI retains its CUDA name on HIP; prefill remains eager.
+    command:
+      - serve
+      - --attention-backend
+      - triton
+      - --moe-cache-auto
+      - --cuda-graph-max-bs
+      - "${ROCM_GRAPH_MAX_BS:-2}"
+
+volumes:
+  rocm-kernels:

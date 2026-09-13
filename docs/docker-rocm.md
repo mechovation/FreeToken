@@ -1,12 +1,21 @@
 # Linux Docker on Radeon AI PRO R9700
 
-Experimental single-GPU ROCm support for RDNA4 (`gfx1201`). Start with the
-small dense BF16 checkpoint `Qwen/Qwen3-0.6B` before testing larger models.
-This is a ROCm/HIP port of FreeToken, not a Vulkan backend.
+Experimental single-GPU ROCm support for RDNA4 (`gfx1201`). The default
+`compose.yaml` serves `nvidia/Qwen3.6-35B-A3B-NVFP4` with the validated offload
+configuration. This is a ROCm/HIP port of FreeToken, not a Vulkan backend.
 
-The standalone `compose.rocm.yaml` uses port 1920 and `ROCM_*` settings so an
-existing CUDA deployment's `.env` does not select an NVIDIA model or claim
-its port. Local NVIDIA deployment files are not included in this fork.
+The Qwen NVFP4 deployment now enables HIP decode graphs for batch sizes 1 and 2,
+with two active requests and a 65536-token shared KV floor. The floor is not an
+allocation cap: the final normal launch allocated 340189 shared KV tokens and
+all 10240 expert slots. Check `/v1/cache/status` for actual capacity. See the
+[HIP graph validation and benchmarks](rocm-hip-graphs-results.md).
+
+The default Compose file uses port 1920 and `ROCM_*` settings so an existing
+CUDA deployment's `.env` does not select an NVIDIA model or claim its port.
+The previous `compose.rocm.yaml` and `compose.rocm.qwen35.yaml` have been
+consolidated into this one file; neither `-f` nor a model override is needed.
+The local NVIDIA configuration is preserved unchanged in `compose.nvidia.backup`;
+the user's earlier ROCm backup remains in `compose.rocm.backup`.
 
 ## Requirements
 
@@ -33,9 +42,11 @@ Triton are supplied by the container. See [AMD's Linux support matrix](https://r
 ## Build and Test
 
 ```bash
-docker compose -f compose.rocm.yaml build
-docker compose -f compose.rocm.yaml run --rm freetoken-rocm \
+docker compose build
+docker compose run --rm freetoken-rocm \
   python /usr/local/bin/freetoken-rocm-smoke
+docker compose run --rm freetoken-rocm \
+  python /usr/local/bin/freetoken-rocm-graph-smoke
 ```
 
 The smoke test exercises BF16 matrix multiplication, Triton activations and
@@ -43,15 +54,40 @@ RMSNorm, exact-size pinned host memory, HIP JIT embedding lookup, KV stores,
 host-to-device expert gathering, and CPU radix comparison. It requires no
 model weights and fails on numerical mismatches.
 
-## Serve
-
-Use `.env.rocm.example` as a starting configuration. Its cache path defaults to
-`${HOME}/.cache/huggingface`; override it if your weights are stored elsewhere.
+For this server's existing cached ROCm image, the small incremental build is:
 
 ```bash
-docker compose --env-file .env.rocm.example -f compose.rocm.yaml up -d
-docker compose -f compose.rocm.yaml logs -f freetoken-rocm
+docker build -f docker/Dockerfile.hip-graphs -t freetoken:rocm-hip-graphs .
 ```
+
+Both build paths preserve `freetoken:rocm-gfx1201` for rollback. The graph image
+uses a fresh TVM JIT cache namespace because cached inline kernels can retain
+older included headers. No model download or ROCm upgrade is needed.
+
+## Serve
+
+Both `compose.yaml` and the optional `.env.rocm.example` default to the 35B
+checkpoint and `${HOME}/.cache/huggingface`. Override `ROCM_HF_CACHE` if your
+weights are stored elsewhere; an empty cache directory can trigger a fresh
+download. `ROCM_HF_OFFLINE=1` prevents Hub access and requires all needed files
+to be cached already. Model weights and compiled-kernel caches are mounted
+outside the container, so replacing it or rebuilding its image preserves them.
+
+Stop competing services on the R9700 before starting this model. On this server
+that includes `llama-swap`. The model also requires substantial host RAM; see below.
+
+```bash
+docker compose config --quiet
+docker compose up -d freetoken-rocm
+docker compose logs -f freetoken-rocm
+```
+
+For an explicit env file, use `docker compose --env-file .env.rocm.example up -d
+freetoken-rocm`. Otherwise Compose reads `.env` automatically. Nonempty shell
+variables override env-file values, which override the defaults in `compose.yaml`.
+The commented `environment` section in that file explains each setting, its units,
+and relevant memory/performance tradeoffs. Build arguments require a rebuild;
+service environment or command changes require `up -d`, not just `restart`.
 
 The API is bound to `127.0.0.1:1920` by default. Test it with:
 
@@ -59,33 +95,68 @@ The API is bound to `127.0.0.1:1920` by default. Test it with:
 curl --fail http://127.0.0.1:1920/v1/models
 curl --fail http://127.0.0.1:1920/v1/chat/completions \
   -H 'Content-Type: application/json' \
-  -d '{"model":"Qwen3-0.6B","messages":[{"role":"user","content":"What is 2 + 2?"}],"max_tokens":64,"temperature":0,"chat_template_kwargs":{"enable_thinking":false}}'
+  -d '{"model":"Qwen3.6-35B-A3B-NVFP4","messages":[{"role":"user","content":"What is 2 + 2?"}],"max_tokens":64,"temperature":0,"chat_template_kwargs":{"enable_thinking":false}}'
 ```
+
+Wait for `/health` to return `"status":"ok"`. Uvicorn listening alone does not
+mean model loading, capture, and prefill warmup have finished. Startup logs name
+the HIP backend and captured sizes; `HIP graph execution` logs show actual
+replay counts by batch size and separately count eager prefill/decodes.
+
+Disable graphs with `ROCM_GRAPH_MAX_BS=0`. To roll back the image as well:
+
+```bash
+ROCM_RUNTIME_IMAGE=freetoken:rocm-gfx1201 ROCM_GRAPH_MAX_BS=0 \
+  docker compose up -d --no-build --pull never freetoken-rocm
+```
+
+The Dockerfile's standalone small-model command still uses graphs off; the
+enabled Compose default was validated specifically on Qwen3.6 NVFP4/R9700.
 
 To stop only the ROCm service:
 
 ```bash
-docker compose -f compose.rocm.yaml down
+docker compose stop freetoken-rocm
 ```
 
+`docker compose down` also removes this project's containers and network, but
+preserves the named kernel volume unless `-v` is added. Avoid `down -v` when
+you want to retain compiled caches.
+
 Settings include `ROCM_MODEL` (Hugging Face ID or `/models/...`),
-`ROCM_MODEL_NAME`, `ROCM_DEVICE`, `ROCM_NUM_PAGES`, `ROCM_MEMORY_RATIO`,
-`ROCM_MAX_REQUESTS`, `ROCM_KV_RESERVE_TOKENS`, and `ROCM_MOE_BACKEND`. `ROCM_EXTRA_ARGS` adds FreeToken
-CLI options. Change `ROCM_BIND_ADDRESS` to expose the API beyond localhost.
-The API has no authentication by default.
+`ROCM_MODEL_NAME`, `ROCM_DEVICE`, `ROCM_MEMORY_RATIO`, `ROCM_PREFILL_LENGTH`,
+`ROCM_MAX_REQUESTS`, `ROCM_KV_RESERVE_TOKENS`, `ROCM_MOE_BACKEND`,
+`ROCM_NVFP4_BACKEND`, and `ROCM_GRAPH_MAX_BS`. `ROCM_EXTRA_ARGS` adds FreeToken
+CLI options, split on whitespace; values containing spaces are not supported.
+Do not add `--moe-cache-size` or `--moe-cache-rate` without removing the mutually
+exclusive `--moe-cache-auto` from `command`. The old `ROCM_NUM_PAGES` setting is
+no longer used. Change `ROCM_BIND_ADDRESS` to expose the API beyond localhost.
+The API has no authentication by default; protect remote access.
+
+For a small dense-model check instead of loading the 35B checkpoint:
+
+```bash
+ROCM_MODEL=Qwen/Qwen3-0.6B ROCM_MODEL_NAME=Qwen3-0.6B ROCM_MOE_BACKEND=fused \
+  docker compose run --rm --service-ports freetoken-rocm \
+  serve --attention-backend triton --num-pages 4096 --cuda-graph-max-bs 0
+```
+
+Stop the regular service first so the GPU and host port are available. This
+foreground, auto-removed container replaces the command only for the small-model
+check; the default 35B configuration is unchanged.
 
 ### Qwen3.6 35B NVFP4
 
-The full-model override selects the cached NVIDIA checkpoint, the Triton NVFP4
-offload backend, and automatic expert-cache sizing. It removes the small-model
-`--num-pages 4096` override. Allow enough free host RAM for the complete pinned
+The default Compose configuration selects the NVIDIA-published checkpoint, the
+Triton NVFP4 offload backend, and automatic expert-cache sizing on the AMD GPU.
+It does not impose the old small-model `--num-pages 4096` limit. Allow enough
+free host RAM for the complete pinned
 expert banks (roughly 20 GB) plus loading overhead and the rest of the service;
 checkpoint disk size is not its peak RAM requirement. Do not start a second copy
 alongside another large service without checking available RAM.
 
 ```bash
-docker compose --env-file .env.rocm.example \
-  -f compose.rocm.yaml -f compose.rocm.qwen35.yaml up -d freetoken-rocm
+docker compose up -d freetoken-rocm
 ```
 
 For three simultaneous requests with up to 262144 total tokens each, the
@@ -93,8 +164,7 @@ aggregate reservation is 786432 tokens, and concurrency is configured separately
 
 ```bash
 ROCM_MAX_REQUESTS=3 ROCM_KV_RESERVE_TOKENS=786432 \
-  docker compose --env-file .env.rocm.example \
-  -f compose.rocm.yaml -f compose.rocm.qwen35.yaml up -d freetoken-rocm
+  docker compose up -d freetoken-rocm
 ```
 
 This allocation and short-request concurrency have been tested on this server;
@@ -111,6 +181,18 @@ Q8 KV budget is therefore not interchangeable with this BF16 budget, even though
 the weights themselves are NVFP4/FP8. More host RAM increases offload capacity;
 it does not increase PCIe bandwidth. Measure per-request TTFT and decode latency,
 aggregate tokens/sec, and cache misses at each concurrency/cache split.
+
+### Qwen3.6 35B FP8
+
+The cached `Qwen/Qwen3.6-35B-A3B-FP8` checkpoint also works with `MOE_BACKEND=offload`
+in this ROCm image. Select it with `ROCM_MODEL` and set a matching `ROCM_MODEL_NAME`;
+no rebuild is needed. Its expert banks alone need roughly 30 GiB of host memory,
+and the measured container used about 34 GiB after loading. At the same KV floor,
+fewer experts fit in VRAM than with NVFP4.
+
+See the [FP8/NVFP4 comparison](rocm-fp8-comparison.md) for commands and results.
+FP8 was slightly faster for one request, but slower with two concurrent requests;
+it is not the default performance recommendation for this experimental port.
 
 ### Validation on This Server
 
@@ -182,7 +264,7 @@ running. This server's existing `llama-swap` also uses the R9700; do not load a
 competing model during a benchmark. Stop only the ROCm service before restoring it:
 
 ```bash
-docker compose -f compose.rocm.yaml stop freetoken-rocm
+docker compose stop freetoken-rocm
 docker start llama-swap
 ```
 
@@ -202,7 +284,7 @@ After the initial build completes:
 
 ```bash
 bash scripts/archive-rocm-assets.sh export ./archives/rocm
-ROCM_DEPS_IMAGE=freetoken:rocm-deps docker compose -f compose.rocm.yaml build
+ROCM_DEPS_IMAGE=freetoken:rocm-deps docker compose build
 ```
 
 The export reuses the completed dependency stage and compresses the image
@@ -214,7 +296,7 @@ Restore on this or another compatible Linux Docker host:
 
 ```bash
 bash scripts/archive-rocm-assets.sh restore ./archives/rocm
-ROCM_DEPS_IMAGE=freetoken:rocm-deps docker compose -f compose.rocm.yaml build
+ROCM_DEPS_IMAGE=freetoken:rocm-deps docker compose build
 ```
 
 With that override, the runtime builds directly from the restored dependency

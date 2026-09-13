@@ -46,6 +46,49 @@ def _reference_paged_attention(
     return torch.stack(outs, dim=0)
 
 
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="requires a CUDA or HIP GPU")
+def test_decode_graph_replay_changes_kv_pages_lengths_and_positions():
+    from freetoken.kernel.triton.attention import decode_paged_attention
+
+    torch.manual_seed(29)
+    bs, heads, dim, splits = 2, 4, 64, 8
+    q = torch.randn(bs, heads, dim, device="cuda", dtype=torch.bfloat16)
+    k = torch.randn(64, 2, dim, device="cuda", dtype=q.dtype)
+    v = torch.randn_like(k)
+    indptr = torch.tensor([0, 16, 32], device="cuda", dtype=torch.int32)
+    indices = torch.arange(64, device="cuda", dtype=torch.int32)
+    positions = torch.tensor([15, 15], device="cuda", dtype=torch.int64)
+    logits = torch.empty(bs, heads, splits, dim, device="cuda")
+    lse = torch.empty(bs, heads, splits, device="cuda")
+    split_count = torch.full((bs,), splits, device="cuda", dtype=torch.int32)
+
+    def forward():
+        return decode_paged_attention(q, k, v, indptr, indices, positions,
+                                      logits, lse, split_count, splits, dim**-0.5)
+
+    stream = torch.cuda.Stream()
+    stream.wait_stream(torch.cuda.current_stream())
+    with torch.cuda.stream(stream):
+        for _ in range(3):
+            forward()
+    torch.cuda.current_stream().wait_stream(stream)
+    torch.cuda.synchronize()
+    graph = torch.cuda.CUDAGraph()
+    with torch.cuda.graph(graph, stream=stream):
+        actual = forward()
+    for step in range(100):
+        lengths = [1 + step % 31, 1 + (step * 7) % 31]
+        indptr.copy_(torch.tensor([0, lengths[0], sum(lengths)], dtype=torch.int32))
+        positions.copy_(torch.tensor([n - 1 for n in lengths]))
+        indices.copy_(torch.randperm(64))
+        q.normal_()
+        graph.replay()
+        torch.cuda.synchronize()
+        expected = _reference_paged_attention(q, k, v, indptr, indices,
+                    torch.arange(bs), positions, dim**-0.5, None)
+        torch.testing.assert_close(actual.float(), expected.float(), rtol=2e-2, atol=2e-2)
+
+
 def test_triton_backend_passes_attention_sinks_to_paged_kernel(monkeypatch):
     from freetoken.attention import AttentionSpec
     from freetoken.attention.triton import TritonAttentionBackend, TritonMetadata

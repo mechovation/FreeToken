@@ -1,0 +1,137 @@
+[1m[2026-09-13|00:17:15][0m [32mINFO    [0m Parsed arguments:
+ServerArgs(model_path='/root/.cache/huggingface/hub/models--nvidia--Qwen3.6-35B-A3B-NVFP4/snapshots/1355db6a052410cfd62085d94b58866fd0f2c3c5', tp_info=DistributedInfo(rank=0, size=1), dtype=torch.bfloat16, max_running_req=2, attention_backend='triton', moe_backend='offload', nvfp4_backend='triton', expert_load='serial', moe_cache_size=0, moe_cache_rate=None, moe_cache_auto=True, kv_reserve_tokens=65536, moe_cache_policy='lru', moe_prefill_overlap=True, moe_prefill_hit_d2d=False, moe_collect_stats=False, moe_cpu_threads=0, moe_cpu_layers=None, moe_hybrid_max_fetch=-1, cuda_graph_bs=None, cuda_graph_max_bs=0, page_size=1, memory_ratio=0.85, linear_state_cache_ratio=2.0, swa_full_tokens_ratio=0.2, swa_num_pages_override=None, distributed_timeout=60.0, use_dummy_weight=False, use_pynccl=True, max_seq_len_override=None, num_page_override=None, num_token_override=65536, max_extend_tokens=2048, cache_type='radix', offline_mode=False, decode_log_interval=40, special_token_ckpt=False, _unique_suffix='.pid=1', server_host='0.0.0.0', server_port=1919, num_tokenizer=0, silent_output=False, shell_mode=False, served_model_name='qwen3.6:35b-nvfp4', tool_call_parser='qwen3_coder', reasoning_parser='qwen3', sampling_defaults='model', max_output_tokens=None, enable_cache_report=False, cors_origins='tauri://localhost,http://tauri.localhost,http://localhost:1420')
+[1m[2026-09-13|00:17:15|FrontendAPI][0m [32mINFO    [0m Default sampling config (source=model): temperature=1.0, top_k=20, top_p=0.95
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:1919 (Press CTRL+C to quit)
+/opt/freetoken-venv/lib/python3.12/site-packages/freetoken/engine/engine.py:1016: FutureWarning: torch.cuda._set_allocator_settings is deprecated. Use torch._C._accelerator_setAllocatorSettings instead.
+  torch.cuda.memory._set_allocator_settings("expandable_segments:True")
+[1m[2026-09-13|00:17:18|core|rank=0][0m [32mINFO    [0m Enabled expandable_segments (override via PYTORCH_ALLOC_CONF)
+[1m[2026-09-13|00:17:18|core|rank=0][0m [32mINFO    [0m Resolved config: moe_backend='offload', attention_backend='triton', cache_type='hybrid_radix', page_size=1
+[1m[2026-09-13|00:17:19|core|rank=0][0m [32mINFO    [0m Free memory before loading model: 31.79 GiB
+/opt/freetoken-venv/lib/python3.12/site-packages/torch/utils/_device.py:116: UserWarning: expandable_segments not supported on this platform (Triggered internally at /pytorch/c10/hip/HIPAllocatorConfig.h:40.)
+  return func(*args, **kwargs)
+Loading mixed-fp8 weights:   0%|          | 0/3 [00:00<?, ?it/s]Loading mixed-fp8 weights:  33%|███▎      | 1/3 [00:00<00:01,  1.61it/s]Loading mixed-fp8 weights:  67%|██████▋   | 2/3 [00:02<00:01,  1.57s/it]Loading mixed-fp8 weights: 100%|██████████| 3/3 [00:03<00:00,  1.29s/it]Loading mixed-fp8 weights: 100%|██████████| 3/3 [00:03<00:00,  1.27s/it]
+[1m[2026-09-13|00:17:23|core|rank=0][0m [32mINFO    [0m expert banks: slow path (serial build)
+Loading Qwen3.5 NVFP4 experts:   0%|          | 0/3 [00:00<?, ?it/s]Loading Qwen3.5 NVFP4 experts:  33%|███▎      | 1/3 [00:08<00:17,  8.51s/it]Loading Qwen3.5 NVFP4 experts:  67%|██████▋   | 2/3 [00:18<00:09,  9.57s/it]Loading Qwen3.5 NVFP4 experts: 100%|██████████| 3/3 [00:20<00:00,  5.92s/it]Loading Qwen3.5 NVFP4 experts: 100%|██████████| 3/3 [00:20<00:00,  6.80s/it]
+[1m[2026-09-13|00:17:46|core|rank=0][0m [32mINFO    [0m NVFP4 expert backend: triton
+[1m[2026-09-13|00:17:46|core|rank=0][0m [32mINFO    [0m --moe-cache-auto resolved moe_cache_size=10240 num_pages=340189 (prefill_overlap=True)
+[1m[2026-09-13|00:17:47|core|rank=0][0m [32mINFO    [0m Allocating 65536 tokens for KV cache, K + V = 1.25 GiB
+[1m[2026-09-13|00:17:47|core|rank=0][0m [32mINFO    [0m Free memory after initialization: 10.00 GiB
+[1m[2026-09-13|00:17:47|core|rank=0][0m [32mINFO    [0m HIP graph is disabled.
+[1m[2026-09-13|00:18:00|core|rank=0][0m [33mWARNING [0m fused_topk: triton_kernels is not installed -> pure-torch router fallback (numerically equivalent, slower). Expected on Windows (no wheel); on Linux install triton_kernels to restore the fused router.
+[1m[2026-09-13|00:18:05|core|rank=0][0m [32mINFO    [0m Prefill warmup complete for lengths [80, 128] in 18.387 s
+[1m[2026-09-13|00:18:05|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+[1m[2026-09-13|00:18:05|FrontendAPI][0m [32mINFO    [0m API server is ready to serve on 0.0.0.0:1919
+[1m[2026-09-13|00:18:07][0m [32mINFO    [0m reasoning-effort profile: supported=['high', 'low', 'max', 'medium', 'minimal', 'none', 'xhigh'] default=None
+[1m[2026-09-13|00:18:29|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 30, #cached-token: 0, token usage: 0.00, #mamba-slot: 0/12, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 1.28
+[1m[2026-09-13|00:18:29|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:32|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 36, #cached-token: 0, token usage: 0.00, #mamba-slot: 0/12, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 10.95
+[1m[2026-09-13|00:18:32|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:38|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 23, #cached-token: 0, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 1, #queue-req: 0, input throughput (token/s): 3.73
+[1m[2026-09-13|00:18:40|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 64, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 1.15, #queue-req: 0
+[1m[2026-09-13|00:18:42|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 104, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 21.29, #queue-req: 0
+[1m[2026-09-13|00:18:43|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:45|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 11, #cached-token: 0, token usage: 0.00, #mamba-slot: 0/12, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 1.58
+[1m[2026-09-13|00:18:45|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:46|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 11, #cached-token: 0, token usage: 0.00, #mamba-slot: 0/12, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 16.70
+[1m[2026-09-13|00:18:46|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:47|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 11, #cached-token: 0, token usage: 0.00, #mamba-slot: 0/12, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 16.75
+[1m[2026-09-13|00:18:47|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:48|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 295.70
+[1m[2026-09-13|00:18:49|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 546, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 5.49, #queue-req: 0
+[1m[2026-09-13|00:18:51|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 586, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 21.08, #queue-req: 0
+[1m[2026-09-13|00:18:53|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 626, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.97, #queue-req: 0
+[1m[2026-09-13|00:18:54|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:18:56|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 523, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 68.03
+[1m[2026-09-13|00:18:57|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 538, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 11.28, #queue-req: 0
+[1m[2026-09-13|00:18:59|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 578, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 21.05, #queue-req: 0
+[1m[2026-09-13|00:19:01|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 618, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.85, #queue-req: 0
+[1m[2026-09-13|00:19:02|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:03|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 523, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 77.62
+[1m[2026-09-13|00:19:03|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 531, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 15.45, #queue-req: 0
+[1m[2026-09-13|00:19:05|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 571, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.99, #queue-req: 0
+[1m[2026-09-13|00:19:07|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 611, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.14, #queue-req: 0
+[1m[2026-09-13|00:19:09|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 0, #token: 0, token usage: 0.00, #mamba-slot: 0/12, mamba usage: 0.00, gen throughput (token/s): 20.45, #queue-req: 0
+[1m[2026-09-13|00:19:09|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:10|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 525, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 75.47
+[1m[2026-09-13|00:19:12|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 566, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 14.92, #queue-req: 0
+[1m[2026-09-13|00:19:14|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 606, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.39, #queue-req: 0
+[1m[2026-09-13|00:19:16|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 646, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.14, #queue-req: 0
+[1m[2026-09-13|00:19:16|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:17|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 76.29
+[1m[2026-09-13|00:19:18|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 558, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 15.49, #queue-req: 0
+[1m[2026-09-13|00:19:20|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 598, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.49, #queue-req: 0
+[1m[2026-09-13|00:19:22|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 638, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.12, #queue-req: 0
+[1m[2026-09-13|00:19:23|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:24|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 76.21
+[1m[2026-09-13|00:19:25|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 551, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 15.35, #queue-req: 0
+[1m[2026-09-13|00:19:27|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 591, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 20.97, #queue-req: 0
+[1m[2026-09-13|00:19:29|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 631, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 21.01, #queue-req: 0
+[1m[2026-09-13|00:19:30|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:49252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:31|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 7/12, mamba usage: 0.58, #running-req: 2, #queue-req: 0, input throughput (token/s): 71.72
+[1m[2026-09-13|00:19:42|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, #running-req: 2, #queue-req: 0, input throughput (token/s): 45.82
+[1m[2026-09-13|00:19:43|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1085, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 4.03, #queue-req: 0
+[1m[2026-09-13|00:19:45|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1165, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 41.08, #queue-req: 0
+[1m[2026-09-13|00:19:47|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1245, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 41.04, #queue-req: 0
+[1m[2026-09-13|00:19:48|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:49252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:50|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 523, #cached-token: 0, token usage: 0.02, #mamba-slot: 7/12, mamba usage: 0.58, #running-req: 2, #queue-req: 0, input throughput (token/s): 70.21
+[1m[2026-09-13|00:19:50|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, #running-req: 2, #queue-req: 0, input throughput (token/s): 7921.17
+[1m[2026-09-13|00:19:50|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1070, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 24.46, #queue-req: 0
+[1m[2026-09-13|00:19:52|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1150, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 41.10, #queue-req: 0
+[1m[2026-09-13|00:19:54|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1230, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 40.34, #queue-req: 0
+[1m[2026-09-13|00:19:56|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:49252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:19:57|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 7/12, mamba usage: 0.58, #running-req: 2, #queue-req: 0, input throughput (token/s): 69.48
+[1m[2026-09-13|00:19:57|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, #running-req: 2, #queue-req: 0, input throughput (token/s): 7926.68
+[1m[2026-09-13|00:19:58|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1056, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 23.97, #queue-req: 0
+[1m[2026-09-13|00:20:00|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1136, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 41.17, #queue-req: 0
+[1m[2026-09-13|00:20:02|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1216, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 39.95, #queue-req: 0
+[1m[2026-09-13|00:20:04|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1296, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 38.76, #queue-req: 0
+[1m[2026-09-13|00:20:04|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:49252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:20:05|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 7/12, mamba usage: 0.58, #running-req: 2, #queue-req: 0, input throughput (token/s): 68.86
+[1m[2026-09-13|00:20:05|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, #running-req: 2, #queue-req: 0, input throughput (token/s): 7936.46
+[1m[2026-09-13|00:20:07|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1123, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 24.37, #queue-req: 0
+[1m[2026-09-13|00:20:09|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1203, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 41.08, #queue-req: 0
+[1m[2026-09-13|00:20:11|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1283, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 41.06, #queue-req: 0
+[1m[2026-09-13|00:20:11|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:49252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:20:13|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 7/12, mamba usage: 0.58, #running-req: 2, #queue-req: 0, input throughput (token/s): 70.32
+[1m[2026-09-13|00:20:13|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, #running-req: 2, #queue-req: 0, input throughput (token/s): 7894.79
+[1m[2026-09-13|00:20:14|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1109, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 24.39, #queue-req: 0
+[1m[2026-09-13|00:20:16|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1189, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 40.80, #queue-req: 0
+[1m[2026-09-13|00:20:18|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1269, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 40.59, #queue-req: 0
+[1m[2026-09-13|00:20:19|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     172.17.0.1:49252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:56252 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:20:20|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 7/12, mamba usage: 0.58, #running-req: 2, #queue-req: 0, input throughput (token/s): 69.97
+[1m[2026-09-13|00:20:20|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 524, #cached-token: 0, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, #running-req: 2, #queue-req: 0, input throughput (token/s): 7932.35
+[1m[2026-09-13|00:20:21|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1095, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 24.43, #queue-req: 0
+[1m[2026-09-13|00:20:23|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1175, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 39.41, #queue-req: 0
+[1m[2026-09-13|00:20:25|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1255, token usage: 0.02, #mamba-slot: 8/12, mamba usage: 0.67, gen throughput (token/s): 40.07, #queue-req: 0
+[1m[2026-09-13|00:20:27|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1]

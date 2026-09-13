@@ -1,0 +1,2165 @@
+[
+  {
+    "id": "chatcmpl-0",
+    "object": "chat.completion",
+    "created": 1789257803,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Case 0: Why Plants Need Sunlight\n\nPlants need sunlight primarily to perform **photosynthesis**, the biological process by which they convert light energy into chemical energy. This chemical energy is stored in the form of glucose (sugar), which serves as the fundamental fuel for the plant's growth, repair, and reproduction. Without sunlight, this energy conversion cannot occur, leading to the plant's starvation and eventual death.\n\nBelow is a detailed, concrete example illustrating this"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 95,
+      "total_tokens": 123
+    }
+  },
+  {
+    "id": "chatcmpl-1",
+    "object": "chat.completion",
+    "created": 1789257821,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants need sunlight, we must look at the biological process known as **photosynthesis**. Sunlight is not merely a source of light for plants; it is the fundamental **energy source** required to convert inorganic matter into organic food.\n\nHere is the step-by-step breakdown of the mechanism:\n\n1.  **The Energy Deficit**: Plants are \"autotrophs,\" meaning they must create"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 95,
+      "total_tokens": 123
+    }
+  },
+  {
+    "id": "chatcmpl-2",
+    "object": "chat.completion",
+    "created": 1789257821,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants need sunlight, we must look at the biological process known as **photosynthesis**. Sunlight is not merely a source of light for plants; it is the fundamental **energy source** required to convert inorganic matter into organic food.\n\nHere is the step-by-step logical breakdown of the process:\n\n1.  **The Energy Deficit**: Plants are \"autotrophs,\" meaning they must"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 95,
+      "total_tokens": 123
+    }
+  },
+  {
+    "id": "chatcmpl-3",
+    "object": "chat.completion",
+    "created": 1789257822,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-4",
+    "object": "chat.completion",
+    "created": 1789257822,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-6",
+    "object": "chat.completion",
+    "created": 1789257823,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-5",
+    "object": "chat.completion",
+    "created": 1789257823,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-8",
+    "object": "chat.completion",
+    "created": 1789257825,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-7",
+    "object": "chat.completion",
+    "created": 1789257825,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Biological Necessity of Sunlight\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-9",
+    "object": "chat.completion",
+    "created": 1789257828,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 28,
+      "completion_tokens": 15,
+      "total_tokens": 43
+    }
+  },
+  {
+    "id": "chatcmpl-10",
+    "object": "chat.completion",
+    "created": 1789257828,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-11",
+    "object": "chat.completion",
+    "created": 1789257829,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-12",
+    "object": "chat.completion",
+    "created": 1789257829,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-13",
+    "object": "chat.completion",
+    "created": 1789257830,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-14",
+    "object": "chat.completion",
+    "created": 1789257830,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-15",
+    "object": "chat.completion",
+    "created": 1789257832,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-16",
+    "object": "chat.completion",
+    "created": 1789257832,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-18",
+    "object": "chat.completion",
+    "created": 1789257833,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-17",
+    "object": "chat.completion",
+    "created": 1789257833,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-19",
+    "object": "chat.completion",
+    "created": 1789257834,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-20",
+    "object": "chat.completion",
+    "created": 1789257834,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-21",
+    "object": "chat.completion",
+    "created": 1789257835,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-22",
+    "object": "chat.completion",
+    "created": 1789257835,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-23",
+    "object": "chat.completion",
+    "created": 1789257837,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-24",
+    "object": "chat.completion",
+    "created": 1789257837,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-25",
+    "object": "chat.completion",
+    "created": 1789257838,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-26",
+    "object": "chat.completion",
+    "created": 1789257838,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-28",
+    "object": "chat.completion",
+    "created": 1789257839,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-27",
+    "object": "chat.completion",
+    "created": 1789257839,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-29",
+    "object": "chat.completion",
+    "created": 1789257840,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-30",
+    "object": "chat.completion",
+    "created": 1789257840,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-31",
+    "object": "chat.completion",
+    "created": 1789257841,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-32",
+    "object": "chat.completion",
+    "created": 1789257841,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-33",
+    "object": "chat.completion",
+    "created": 1789257843,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-34",
+    "object": "chat.completion",
+    "created": 1789257843,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-35",
+    "object": "chat.completion",
+    "created": 1789257844,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-36",
+    "object": "chat.completion",
+    "created": 1789257844,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-37",
+    "object": "chat.completion",
+    "created": 1789257845,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-38",
+    "object": "chat.completion",
+    "created": 1789257845,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-39",
+    "object": "chat.completion",
+    "created": 1789257846,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-40",
+    "object": "chat.completion",
+    "created": 1789257846,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-41",
+    "object": "chat.completion",
+    "created": 1789257848,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-42",
+    "object": "chat.completion",
+    "created": 1789257848,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-43",
+    "object": "chat.completion",
+    "created": 1789257849,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-44",
+    "object": "chat.completion",
+    "created": 1789257849,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-45",
+    "object": "chat.completion",
+    "created": 1789257850,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-46",
+    "object": "chat.completion",
+    "created": 1789257850,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-47",
+    "object": "chat.completion",
+    "created": 1789257851,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-48",
+    "object": "chat.completion",
+    "created": 1789257851,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-49",
+    "object": "chat.completion",
+    "created": 1789257852,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-50",
+    "object": "chat.completion",
+    "created": 1789257852,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-51",
+    "object": "chat.completion",
+    "created": 1789257854,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-52",
+    "object": "chat.completion",
+    "created": 1789257854,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-53",
+    "object": "chat.completion",
+    "created": 1789257855,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-54",
+    "object": "chat.completion",
+    "created": 1789257855,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-55",
+    "object": "chat.completion",
+    "created": 1789257856,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-56",
+    "object": "chat.completion",
+    "created": 1789257856,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-57",
+    "object": "chat.completion",
+    "created": 1789257857,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-58",
+    "object": "chat.completion",
+    "created": 1789257857,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-59",
+    "object": "chat.completion",
+    "created": 1789257859,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-60",
+    "object": "chat.completion",
+    "created": 1789257859,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-61",
+    "object": "chat.completion",
+    "created": 1789257860,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-62",
+    "object": "chat.completion",
+    "created": 1789257860,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-63",
+    "object": "chat.completion",
+    "created": 1789257861,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-64",
+    "object": "chat.completion",
+    "created": 1789257861,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-65",
+    "object": "chat.completion",
+    "created": 1789257862,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-66",
+    "object": "chat.completion",
+    "created": 1789257862,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-67",
+    "object": "chat.completion",
+    "created": 1789257863,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-68",
+    "object": "chat.completion",
+    "created": 1789257863,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-69",
+    "object": "chat.completion",
+    "created": 1789257865,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-70",
+    "object": "chat.completion",
+    "created": 1789257865,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-71",
+    "object": "chat.completion",
+    "created": 1789257866,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-72",
+    "object": "chat.completion",
+    "created": 1789257866,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-73",
+    "object": "chat.completion",
+    "created": 1789257867,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-74",
+    "object": "chat.completion",
+    "created": 1789257867,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-75",
+    "object": "chat.completion",
+    "created": 1789257868,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-76",
+    "object": "chat.completion",
+    "created": 1789257868,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-77",
+    "object": "chat.completion",
+    "created": 1789257869,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-78",
+    "object": "chat.completion",
+    "created": 1789257869,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-79",
+    "object": "chat.completion",
+    "created": 1789257871,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-80",
+    "object": "chat.completion",
+    "created": 1789257871,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-81",
+    "object": "chat.completion",
+    "created": 1789257872,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-82",
+    "object": "chat.completion",
+    "created": 1789257872,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-83",
+    "object": "chat.completion",
+    "created": 1789257873,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-84",
+    "object": "chat.completion",
+    "created": 1789257873,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-85",
+    "object": "chat.completion",
+    "created": 1789257874,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-86",
+    "object": "chat.completion",
+    "created": 1789257874,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-87",
+    "object": "chat.completion",
+    "created": 1789257876,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-88",
+    "object": "chat.completion",
+    "created": 1789257876,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-89",
+    "object": "chat.completion",
+    "created": 1789257877,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-90",
+    "object": "chat.completion",
+    "created": 1789257877,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-91",
+    "object": "chat.completion",
+    "created": 1789257878,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-92",
+    "object": "chat.completion",
+    "created": 1789257878,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-93",
+    "object": "chat.completion",
+    "created": 1789257879,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-94",
+    "object": "chat.completion",
+    "created": 1789257879,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-95",
+    "object": "chat.completion",
+    "created": 1789257881,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-96",
+    "object": "chat.completion",
+    "created": 1789257881,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-97",
+    "object": "chat.completion",
+    "created": 1789257882,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-98",
+    "object": "chat.completion",
+    "created": 1789257882,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the principles of biology and botany, here is a detailed explanation"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-99",
+    "object": "chat.completion",
+    "created": 1789257883,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 29,
+      "completion_tokens": 15,
+      "total_tokens": 44
+    }
+  },
+  {
+    "id": "chatcmpl-100",
+    "object": "chat.completion",
+    "created": 1789257883,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: The Role of Sunlight in Plant Physiology\n\nTo"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 30,
+      "completion_tokens": 15,
+      "total_tokens": 45
+    }
+  },
+  {
+    "id": "chatcmpl-101",
+    "object": "chat.completion",
+    "created": 1789257884,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 30,
+      "completion_tokens": 15,
+      "total_tokens": 45
+    }
+  },
+  {
+    "id": "chatcmpl-102",
+    "object": "chat.completion",
+    "created": 1789257884,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "### Logical Deduction: Why Plants Need Sunlight\n\nTo understand why plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 30,
+      "completion_tokens": 15,
+      "total_tokens": 45
+    }
+  }
+]

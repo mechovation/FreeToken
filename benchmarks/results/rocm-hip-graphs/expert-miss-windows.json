@@ -1,0 +1,102 @@
+[
+  {
+    "batch_size": 1,
+    "through_decode_step": 32,
+    "memory_allocated_bytes": 23222036992,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 1280,
+    "active_per_layer": 8.0,
+    "missing_per_layer": 2.18359375,
+    "miss_rate": 0.27294921875
+  },
+  {
+    "batch_size": 1,
+    "through_decode_step": 64,
+    "memory_allocated_bytes": 23222036992,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 1280,
+    "active_per_layer": 8.0,
+    "missing_per_layer": 0.85546875,
+    "miss_rate": 0.10693359375
+  },
+  {
+    "batch_size": 1,
+    "through_decode_step": 128,
+    "memory_allocated_bytes": 23222036480,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 2560,
+    "active_per_layer": 8.0,
+    "missing_per_layer": 0.362890625,
+    "miss_rate": 0.045361328125
+  },
+  {
+    "batch_size": 1,
+    "through_decode_step": 256,
+    "memory_allocated_bytes": 23222035968,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 5120,
+    "active_per_layer": 8.0,
+    "missing_per_layer": 0.340625,
+    "miss_rate": 0.042578125
+  },
+  {
+    "batch_size": 1,
+    "through_decode_step": 512,
+    "memory_allocated_bytes": 23222034944,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 10240,
+    "active_per_layer": 8.0,
+    "missing_per_layer": 0.07255859375,
+    "miss_rate": 0.00906982421875
+  },
+  {
+    "batch_size": 2,
+    "through_decode_step": 32,
+    "memory_allocated_bytes": 23222035968,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 1280,
+    "active_per_layer": 12.9703125,
+    "missing_per_layer": 0.40859375,
+    "miss_rate": 0.031502228647150944
+  },
+  {
+    "batch_size": 2,
+    "through_decode_step": 64,
+    "memory_allocated_bytes": 23222035456,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 1280,
+    "active_per_layer": 14.20625,
+    "missing_per_layer": 0.02734375,
+    "miss_rate": 0.001924769027716674
+  },
+  {
+    "batch_size": 2,
+    "through_decode_step": 128,
+    "memory_allocated_bytes": 23222034944,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 2560,
+    "active_per_layer": 14.523828125,
+    "missing_per_layer": 0.0140625,
+    "miss_rate": 0.000968236464861085
+  },
+  {
+    "batch_size": 2,
+    "through_decode_step": 256,
+    "memory_allocated_bytes": 23222033920,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 5120,
+    "active_per_layer": 14.108203125,
+    "missing_per_layer": 0.041015625,
+    "miss_rate": 0.0029072182074923168
+  },
+  {
+    "batch_size": 2,
+    "through_decode_step": 512,
+    "memory_allocated_bytes": 23222031872,
+    "memory_reserved_bytes": 23542628352,
+    "layer_calls": 10240,
+    "active_per_layer": 14.400390625,
+    "missing_per_layer": 0.02705078125,
+    "miss_rate": 0.0018784755187847553
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "kv_tokens": 262144,
+    "graph_max_bs": 0,
+    "concurrency": {
+      "1": {
+        "samples": 10,
+        "tg_mean": 20.78756113348928,
+        "tg_population_std": 0.1683824551994655,
+        "ttft_mean_s": 0.8072651999998925,
+        "per_request_tg_mean": 20.787561133489284
+      },
+      "2": {
+        "samples": 10,
+        "tg_mean": 40.070515914276314,
+        "tg_population_std": 0.4544115432515822,
+        "ttft_mean_s": 1.4287772765497722,
+        "per_request_tg_mean": 20.141247589043154
+      }
+    }
+  },
+  {
+    "kv_tokens": 262144,
+    "graph_max_bs": 2,
+    "concurrency": {
+      "1": {
+        "samples": 10,
+        "tg_mean": 73.94822315031978,
+        "tg_population_std": 0.45414066127025166,
+        "ttft_mean_s": 0.7696228482989682,
+        "per_request_tg_mean": 73.94822315031976
+      },
+      "2": {
+        "samples": 10,
+        "tg_mean": 106.02030691365887,
+        "tg_population_std": 0.6242796561724142,
+        "ttft_mean_s": 0.7130328396999175,
+        "per_request_tg_mean": 53.01133197486244
+      }
+    }
+  },
+  {
+    "kv_tokens": 65536,
+    "graph_max_bs": 0,
+    "concurrency": {
+      "1": {
+        "samples": 10,
+        "tg_mean": 20.63216473562578,
+        "tg_population_std": 0.23927568482869033,
+        "ttft_mean_s": 0.8254027771996334,
+        "per_request_tg_mean": 20.63216473562578
+      },
+      "2": {
+        "samples": 10,
+        "tg_mean": 39.93277891792605,
+        "tg_population_std": 0.3925283856163855,
+        "ttft_mean_s": 1.334479606149398,
+        "per_request_tg_mean": 20.071772513620687
+      }
+    }
+  },
+  {
+    "kv_tokens": 65536,
+    "graph_max_bs": 2,
+    "concurrency": {
+      "1": {
+        "samples": 10,
+        "tg_mean": 74.67262545490325,
+        "tg_population_std": 0.5665217375354674,
+        "ttft_mean_s": 0.6676770005000435,
+        "per_request_tg_mean": 74.67262545490325
+      },
+      "2": {
+        "samples": 10,
+        "tg_mean": 106.94399768671835,
+        "tg_population_std": 0.4031124720480662,
+        "ttft_mean_s": 0.8003598091498134,
+        "per_request_tg_mean": 53.473049605351996
+      }
+    }
+  }
+]

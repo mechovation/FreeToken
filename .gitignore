@@ -228,6 +228,12 @@ refs/
 
 benchmarks/cross_framework
 
+# Local NVIDIA benchmark setup and captures; the upstream project already
+# supports NVIDIA and these files are hardware-specific diagnostics only.
+compose.nvidia*
+docs/*rtx3060*
+benchmarks/results/nvidia-*/
+
 # Local git worktrees
 .worktrees/
 

@@ -1,0 +1,117 @@
+{
+  "amd_health": {
+    "status": "ok",
+    "model": "Qwen3.6-35B-A3B-NVFP4",
+    "instance_id": "d3819975-cd8e-424b-8e7b-8ba1700fb689",
+    "uptime_s": 36,
+    "maintenance": "serving",
+    "version": "0.1.2"
+  },
+  "amd_geometry": {
+    "state": "serving",
+    "last_rebuild": null,
+    "geometry": {
+      "num_pages": 340189,
+      "page_size": 1,
+      "moe_cache_size": 10240,
+      "num_mamba_slots": 12,
+      "num_experts": 256,
+      "num_moe_layers": 40,
+      "moe_cache_policy": "lru",
+      "unit_bytes": {
+        "kv_per_token": 20480,
+        "moe_per_expert": 1775616,
+        "mamba_per_slot": 64389120,
+        "swa_per_token": 0
+      },
+      "swa_full_tokens_ratio": 0.0,
+      "swa_page_size": 0,
+      "num_swa_pages": 0,
+      "cache_budget_bytes": 25986439577,
+      "reasoning": null,
+      "limits": {
+        "kv_tokens": {
+          "min": 1,
+          "max": 1268869
+        },
+        "moe_experts": {
+          "min": 256,
+          "max": 10240
+        },
+        "mamba_slots": {
+          "min": 8,
+          "max": 403
+        },
+        "swa_tokens": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  },
+  "single": {
+    "id": "chatcmpl-0",
+    "object": "chat.completion",
+    "created": 1789259912,
+    "model": "Qwen3.6-35B-A3B-NVFP4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To explain why the Moon has phases, we must look at the geometric relationship between the Sun, the Earth, and the Moon, as well as the physics of how light behaves.\n\nHere is the step-by-step logical deduction of the phenomenon.\n\n### 1. The Source of Light (The Sun)\nThe Moon is a dark, rocky body. It does not generate its own light. The only reason we can see the Moon is because it reflects sunlight.\n"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 21,
+      "completion_tokens": 95,
+      "total_tokens": 116
+    }
+  },
+  "concurrent": [
+    {
+      "id": "chatcmpl-1",
+      "object": "chat.completion",
+      "created": 1789259927,
+      "model": "Qwen3.6-35B-A3B-NVFP4",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "To explain why the Moon has phases, we must look at the geometric relationship between the Sun, the Earth, and the Moon, as well as the physics of how light behaves.\n\nHere is the step-by-step logical deduction of the phenomenon.\n\n### 1. The Source of Light (The Sun)\nThe Moon is a dark, rocky body. It does not generate its own light. The only reason we can see the Moon is because it reflects sunlight.\n"
+          },
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 21,
+        "completion_tokens": 95,
+        "total_tokens": 116
+      }
+    },
+    {
+      "id": "chatcmpl-2",
+      "object": "chat.completion",
+      "created": 1789259927,
+      "model": "Qwen3.6-35B-A3B-NVFP4",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "To explain why the Moon has phases, we must look at the geometric relationship between the Sun, the Earth, and the Moon, as well as the physics of how light behaves.\n\nHere is the step-by-step logical deduction of the phenomenon.\n\n### 1. The Source of Light (The Sun)\nThe Moon does not produce its own light. It is a dark, rocky body. The only reason we can see the Moon is because it reflects sunlight.\n"
+          },
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 21,
+        "completion_tokens": 95,
+        "total_tokens": 116
+      }
+    }
+  ]
+}

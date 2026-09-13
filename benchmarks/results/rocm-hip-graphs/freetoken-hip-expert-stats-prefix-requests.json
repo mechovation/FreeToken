@@ -1,0 +1,44 @@
+[
+  {
+    "id": "chatcmpl-3",
+    "object": "chat.completion",
+    "created": 1789259732,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the background provided, plants need sunlight because it provides the essential energy required to drive the chemical reaction known as **photosynthesis**. Without sunlight, plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4530,
+      "completion_tokens": 31,
+      "total_tokens": 4561
+    }
+  },
+  {
+    "id": "chatcmpl-4",
+    "object": "chat.completion",
+    "created": 1789259733,
+    "model": "qwen3.6:35b-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the background provided, plants need sunlight because it provides the essential energy required to drive the chemical reaction known as **photosynthesis**. Without sunlight, plants"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4530,
+      "completion_tokens": 31,
+      "total_tokens": 4561
+    }
+  }
+]

@@ -915,6 +915,7 @@ class Engine:
                 logits = self.graph_runner.replay(batch)
             else:
                 logits = self.model.forward()
+                self.graph_runner.record_eager(batch)
         if self.cpu_moe_executor is not None:
             # One pinned read: surfaces a fired flag-handshake watchdog (dead coordinator
             # -> stale expert outputs) as a loud error instead of silent corruption.

@@ -1,0 +1,11 @@
+eca1b136d49859dc4eb880e403b61e51576a73e9ef5a133201159a82b3201931
+READY freetoken-hip-prefill-lifecycle-retry
+PASS 103 requests including single/concurrent decode
+REBUILD {'request_id': 'b94cd8d8-3b73-4508-83b8-4d48a49b214e', 'status': 'ok', 'moe_cache_size': 10240, 'num_pages': 64512, 'mamba_slots': 12, 'num_swa_pages': 0, 'error': None}
+REBUILD {'request_id': '53297e9e-22aa-4f7d-981d-bd6787879ce8', 'status': 'ok', 'moe_cache_size': 10240, 'num_pages': 65536, 'mamba_slots': 12, 'num_swa_pages': 0, 'error': None}
+REBUILD {'request_id': '8af5d352-164d-4a9e-8a56-a7f0ae3a79b7', 'status': 'ok', 'moe_cache_size': 10240, 'num_pages': 65536, 'mamba_slots': 14, 'num_swa_pages': 0, 'error': None}
+PASS invalid rebuild rejected
+PASS cancellation and subsequent generation
+PASS prefix reuse, max cached tokens: 4480
+PASS auto sizing, both graph/eager oracles, serving and lifecycle
+freetoken-hip-prefill-lifecycle-retry

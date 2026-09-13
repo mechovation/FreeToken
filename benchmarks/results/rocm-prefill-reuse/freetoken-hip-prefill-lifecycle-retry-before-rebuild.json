@@ -1,0 +1,54 @@
+{
+  "num_pages": 65536,
+  "page_size": 1,
+  "moe_cache_size": 10240,
+  "num_mamba_slots": 12,
+  "num_experts": 256,
+  "num_moe_layers": 40,
+  "moe_cache_policy": "lru",
+  "unit_bytes": {
+    "kv_per_token": 20480,
+    "moe_per_expert": 1775616,
+    "mamba_per_slot": 64389120,
+    "swa_per_token": 0
+  },
+  "swa_full_tokens_ratio": 0.0,
+  "swa_page_size": 0,
+  "num_swa_pages": 0,
+  "cache_budget_bytes": 25986439577,
+  "reasoning": {
+    "gears": [
+      "off",
+      "on"
+    ],
+    "default": "on",
+    "kwargs": {
+      "off": {
+        "enable_thinking": false,
+        "thinking_mode": "disabled"
+      },
+      "on": {
+        "enable_thinking": true,
+        "thinking_mode": "enabled"
+      }
+    }
+  },
+  "limits": {
+    "kv_tokens": {
+      "min": 1,
+      "max": 1268869
+    },
+    "moe_experts": {
+      "min": 256,
+      "max": 10240
+    },
+    "mamba_slots": {
+      "min": 8,
+      "max": 403
+    },
+    "swa_tokens": {
+      "min": 0,
+      "max": 0
+    }
+  }
+}

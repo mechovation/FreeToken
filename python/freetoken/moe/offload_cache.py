@@ -678,7 +678,7 @@ class OffloadMoeCache:
                 f"(needs > {2 * self.num_experts} slots)"
             )
         elif not self._resolve_batch_memcpy():
-            reason = "cudaMemcpyBatchAsync is unavailable"  # resolve logged the specifics
+            reason = "batch memcpy is unavailable"  # resolve logged the specifics
         else:
             return True
         if not self._hit_d2d_fallback_logged:
@@ -695,6 +695,8 @@ class OffloadMoeCache:
                 from freetoken.kernel.batch_memcpy import load_batch_memcpy
 
                 self._batch_memcpy = load_batch_memcpy()
+                backend = "HIP" if torch.version.hip else "CUDA"
+                logger.info(f"MoE prefill hit-D2D enabled ({backend} batch memcpy)")
             except Exception as exc:  # noqa: BLE001 -- any build/runtime gap => legacy path
                 logger.warning(f"MoE prefill hit-D2D disabled ({exc}); using full-layer copies")
                 self._batch_memcpy = False

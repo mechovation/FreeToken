@@ -1,0 +1,801 @@
+[1m[2026-09-13|20:30:00][0m [32mINFO    [0m Parsed arguments:
+ServerArgs(model_path='/root/.cache/huggingface/hub/models--nvidia--Qwen3.6-35B-A3B-NVFP4/snapshots/1355db6a052410cfd62085d94b58866fd0f2c3c5', tp_info=DistributedInfo(rank=0, size=1), dtype=torch.bfloat16, max_running_req=2, attention_backend='triton', moe_backend='offload', nvfp4_backend='triton', expert_load='serial', moe_cache_size=0, moe_cache_rate=None, moe_cache_auto=True, kv_reserve_tokens=65536, moe_cache_policy='lru', moe_prefill_overlap=True, moe_prefill_hit_d2d=True, moe_collect_stats=False, moe_cpu_threads=0, moe_cpu_layers=None, moe_hybrid_max_fetch=-1, cuda_graph_bs=None, cuda_graph_max_bs=2, page_size=1, memory_ratio=0.85, linear_state_cache_ratio=2.0, swa_full_tokens_ratio=0.2, swa_num_pages_override=None, distributed_timeout=60.0, use_dummy_weight=False, use_pynccl=True, max_seq_len_override=None, num_page_override=None, num_token_override=65536, max_extend_tokens=2048, cache_type='radix', offline_mode=False, decode_log_interval=40, special_token_ckpt=False, _unique_suffix='.pid=1', server_host='0.0.0.0', server_port=1919, num_tokenizer=0, silent_output=False, shell_mode=False, served_model_name='qwen3.6:35b-nvfp4', tool_call_parser='qwen3_coder', reasoning_parser='qwen3', sampling_defaults='model', max_output_tokens=None, enable_cache_report=False, cors_origins='tauri://localhost,http://tauri.localhost,http://localhost:1420')
+[1m[2026-09-13|20:30:00|FrontendAPI][0m [32mINFO    [0m Default sampling config (source=model): temperature=1.0, top_k=20, top_p=0.95
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:1919 (Press CTRL+C to quit)
+/opt/freetoken-venv/lib/python3.12/site-packages/freetoken/engine/engine.py:1016: FutureWarning: torch.cuda._set_allocator_settings is deprecated. Use torch._C._accelerator_setAllocatorSettings instead.
+  torch.cuda.memory._set_allocator_settings("expandable_segments:True")
+[1m[2026-09-13|20:30:03|core|rank=0][0m [32mINFO    [0m Enabled expandable_segments (override via PYTORCH_ALLOC_CONF)
+[1m[2026-09-13|20:30:03|core|rank=0][0m [32mINFO    [0m Resolved config: moe_backend='offload', attention_backend='triton', cache_type='hybrid_radix', page_size=1
+[1m[2026-09-13|20:30:03|core|rank=0][0m [32mINFO    [0m Free memory before loading model: 31.79 GiB
+/opt/freetoken-venv/lib/python3.12/site-packages/torch/utils/_device.py:116: UserWarning: expandable_segments not supported on this platform (Triggered internally at /pytorch/c10/hip/HIPAllocatorConfig.h:40.)
+  return func(*args, **kwargs)
+Loading mixed-fp8 weights:   0%|          | 0/3 [00:00<?, ?it/s]Loading mixed-fp8 weights:  33%|███▎      | 1/3 [00:00<00:01,  1.67it/s]Loading mixed-fp8 weights:  67%|██████▋   | 2/3 [00:02<00:01,  1.52s/it]Loading mixed-fp8 weights: 100%|██████████| 3/3 [00:03<00:00,  1.25s/it]Loading mixed-fp8 weights: 100%|██████████| 3/3 [00:03<00:00,  1.23s/it]
+[1m[2026-09-13|20:30:07|core|rank=0][0m [32mINFO    [0m expert banks: slow path (serial build)
+Loading Qwen3.5 NVFP4 experts:   0%|          | 0/3 [00:00<?, ?it/s]Loading Qwen3.5 NVFP4 experts:  33%|███▎      | 1/3 [00:08<00:16,  8.12s/it]Loading Qwen3.5 NVFP4 experts:  67%|██████▋   | 2/3 [00:18<00:09,  9.22s/it]Loading Qwen3.5 NVFP4 experts: 100%|██████████| 3/3 [00:19<00:00,  5.83s/it]Loading Qwen3.5 NVFP4 experts: 100%|██████████| 3/3 [00:19<00:00,  6.63s/it]
+[1m[2026-09-13|20:30:30|core|rank=0][0m [32mINFO    [0m NVFP4 expert backend: triton
+[1m[2026-09-13|20:30:30|core|rank=0][0m [32mINFO    [0m --moe-cache-auto resolved moe_cache_size=10240 num_pages=340189 (prefill_overlap=True)
+[1m[2026-09-13|20:30:31|core|rank=0][0m [32mINFO    [0m Allocating 65536 tokens for KV cache, K + V = 1.25 GiB
+[1m[2026-09-13|20:30:31|core|rank=0][0m [32mINFO    [0m Free memory after initialization: 10.00 GiB
+[1m[2026-09-13|20:30:31|core|rank=0][0m [32mINFO    [0m Start capturing HIP graphs with sizes: [1, 2]
+[1m[2026-09-13|20:30:31|core|rank=0][0m [32mINFO    [0m Free GPU memory before capturing HIP graphs: 10.00 GiB
+[1m[2026-09-13|20:30:40|core|rank=0][0m [33mWARNING [0m fused_topk: triton_kernels is not installed -> pure-torch router fallback (numerically equivalent, slower). Expected on Windows (no wheel); on Linux install triton_kernels to restore the fused router.
+Preparing for capturing HIP graphs...:   0%|          | 0/2 [00:00<?, ?batch/s]Capturing graphs: bs = 2   | avail_mem = 10.00 GiB:   0%|          | 0/2 [00:00<?, ?batch/s]Capturing graphs: bs = 2   | avail_mem = 10.00 GiB:  50%|█████     | 1/2 [00:19<00:19, 19.57s/batch]Capturing graphs: bs = 1   | avail_mem = 9.72 GiB:  50%|█████     | 1/2 [00:19<00:19, 19.57s/batch] Capturing graphs: bs = 1   | avail_mem = 9.72 GiB: 100%|██████████| 2/2 [00:21<00:00,  9.41s/batch]Capturing graphs: bs = 1   | avail_mem = 9.72 GiB: 100%|██████████| 2/2 [00:21<00:00, 10.93s/batch]
+[1m[2026-09-13|20:30:53|core|rank=0][0m [32mINFO    [0m HIP graphs captured: sizes=[1, 2], duration_s=22.72, memory_delta=0.31 GiB, free_memory=9.69 GiB
+PREFILL_VERIFY {"layer": 0, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 80, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 0, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 128, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:31:35|core|rank=0][0m [32mINFO    [0m Prefill warmup complete for lengths [80, 128] in 41.752 s
+[1m[2026-09-13|20:31:35|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+[1m[2026-09-13|20:31:35|FrontendAPI][0m [32mINFO    [0m API server is ready to serve on 0.0.0.0:1919
+[1m[2026-09-13|20:33:41][0m [32mINFO    [0m reasoning-effort profile: supported=['high', 'low', 'max', 'medium', 'minimal', 'none', 'xhigh'] default=None
+PREFILL_VERIFY {"layer": 0, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:34:14|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 1}, eager={'prefill': 1}
+[1m[2026-09-13|20:34:15|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 543, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 3.40
+[1m[2026-09-13|20:34:16|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 584, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 0.25, #queue-req: 0
+[1m[2026-09-13|20:34:16|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 624, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 63.61, #queue-req: 0
+[1m[2026-09-13|20:34:17|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 664, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 71.84, #queue-req: 0
+[1m[2026-09-13|20:34:17|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 704, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 73.68, #queue-req: 0
+[1m[2026-09-13|20:34:18|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 744, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 74.85, #queue-req: 0
+[1m[2026-09-13|20:34:19|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 784, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 73.17, #queue-req: 0
+[1m[2026-09-13|20:34:19|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 256}, eager={'prefill': 1}
+[1m[2026-09-13|20:34:19|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 824, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 73.88, #queue-req: 0
+[1m[2026-09-13|20:34:20|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 864, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 75.86, #queue-req: 0
+[1m[2026-09-13|20:34:20|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 904, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 75.58, #queue-req: 0
+[1m[2026-09-13|20:34:21|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 944, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 75.82, #queue-req: 0
+[1m[2026-09-13|20:34:21|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 984, token usage: 0.02, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 75.87, #queue-req: 0
+[1m[2026-09-13|20:34:22|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 1024, token usage: 0.02, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 75.95, #queue-req: 0
+[1m[2026-09-13|20:34:22|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 512}, eager={'prefill': 1}
+[1m[2026-09-13|20:34:22|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 1064, token usage: 0.02, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 72.26, #queue-req: 0
+[1m[2026-09-13|20:34:23|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 1104, token usage: 0.02, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 75.55, #queue-req: 0
+INFO:     172.17.0.1:42660 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|20:34:23|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+PREFILL_VERIFY {"layer": 0, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 543, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:34:37|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 543, #cached-token: 0, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 24.65
+[1m[2026-09-13|20:34:37|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 545, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 2.80, #queue-req: 0
+[1m[2026-09-13|20:34:38|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 585, token usage: 0.01, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 73.97, #queue-req: 0
+INFO:     172.17.0.1:55668 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|20:34:38|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:35:06|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.06, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 69.77
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:35:21|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.09, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 144.01
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:35:35|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.12, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 143.47
+PREFILL_VERIFY {"layer": 0, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 931, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:35:49|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.14, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 1, #queue-req: 0, input throughput (token/s): 147.32
+[1m[2026-09-13|20:35:49|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 931, #cached-token: 0, token usage: 0.14, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 425987.33
+[1m[2026-09-13|20:35:49|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 9142, token usage: 0.14, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 0.56, #queue-req: 0
+[1m[2026-09-13|20:35:50|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 9182, token usage: 0.14, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 72.03, #queue-req: 0
+INFO:     172.17.0.1:46854 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|20:35:50|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:36:18|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.06, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 69.18
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:36:33|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.09, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 138.44
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:36:48|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.12, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 142.44
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:37:03|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.16, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 130.10
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:37:18|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.19, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 143.37
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:37:32|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.22, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 141.12
+PREFILL_VERIFY {"layer": 0, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 2048, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:37:46|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.25, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 145.21
+PREFILL_VERIFY {"layer": 0, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 1, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 2, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 3, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 4, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 5, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 6, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 7, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 8, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 9, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 10, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 11, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 12, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 13, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 14, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 15, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 16, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 17, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 18, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 19, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 20, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 21, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 22, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 23, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 24, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 25, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 26, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 27, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 28, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 29, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 30, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 31, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 32, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 33, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 34, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 35, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 36, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 37, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 38, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+PREFILL_VERIFY {"layer": 39, "tokens": 1839, "bank_bytes": "exact", "expert_output": "pass"}
+[1m[2026-09-13|20:38:01|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.28, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 1, #queue-req: 0, input throughput (token/s): 141.74
+[1m[2026-09-13|20:38:01|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 1839, #cached-token: 0, token usage: 0.28, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 838376.20
+[1m[2026-09-13|20:38:01|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 18259, token usage: 0.28, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 0.30, #queue-req: 0
+[1m[2026-09-13|20:38:01|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 768}, eager={'prefill': 16}
+INFO:     172.17.0.1:56058 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|20:38:02|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1]

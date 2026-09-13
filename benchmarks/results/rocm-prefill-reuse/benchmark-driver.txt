@@ -1,0 +1,78 @@
+START freetoken-hip-prefill-kv64k-0-off
+e836ef132b453d2034b4a3d27db44da161d9fa4c97a415b346dc60e1499da562
+0 {'prompt_tokens': 543, 'completion_tokens': 599, 'total_tokens': 1142} 20.280826422997052
+100 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.7282994330016663
+101 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.66862129700894
+102 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6681047210004181
+103 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6684402399987448
+104 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6687028730084421
+1100 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.791290930006653
+1101 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5494823189947056
+1102 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5486854269984178
+1103 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.547973926004488
+1104 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5504992560017854
+200 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 4.3722693609888665
+201 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 4.317513511006837
+2200 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 9.316439157002605
+2201 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 9.25785812700633
+freetoken-hip-prefill-kv64k-0-off
+START freetoken-hip-prefill-kv64k-1-on
+aef10df68cbecc34ba48588d45de7bf915408f93b0391200fef823a1dafa83a7
+0 {'prompt_tokens': 543, 'completion_tokens': 599, 'total_tokens': 1142} 20.63762758699886
+100 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.4494900030113058
+101 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.38427818099444266
+102 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.38370958900486585
+103 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.3840668210032163
+104 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.38505678600631654
+1100 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.3741113680007402
+1101 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1280203640053514
+1102 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1281020439928398
+1103 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1273443620011676
+1104 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1295312979927985
+200 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 3.7069257700059097
+201 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 3.64437011499831
+2200 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 8.209363620000659
+2201 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 8.119714029002353
+freetoken-hip-prefill-kv64k-1-on
+START freetoken-hip-prefill-kv64k-2-on
+75f214b53a04760659e95f3e658d0c547692972dad79ffea1e4fd86cafbceafa
+0 {'prompt_tokens': 543, 'completion_tokens': 599, 'total_tokens': 1142} 20.27624662499875
+100 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.4505849419947481
+101 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.3846436430030735
+102 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.3841569049982354
+103 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.3853720649931347
+104 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.384274584997911
+1100 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.3756653640011791
+1101 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1290725480066612
+1102 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1320654430019204
+1103 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1280807820003247
+1104 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.1299005579930963
+200 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 3.704182529996615
+201 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 3.647824113999377
+2200 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 8.208726345998002
+2201 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 8.12073260100442
+COLD 0 {'prompt_tokens': 463, 'completion_tokens': 63, 'total_tokens': 526} 0.7318915579962777
+COLD 1 {'prompt_tokens': 463, 'completion_tokens': 63, 'total_tokens': 526} 0.6764201479963958
+COLD 2 {'prompt_tokens': 463, 'completion_tokens': 63, 'total_tokens': 526} 0.860530606994871
+freetoken-hip-prefill-kv64k-2-on
+START freetoken-hip-prefill-kv64k-3-off
+0b5f2fb163295d2c31e437a2fe7f415a88da7222814e4898d3e64269915f3758
+0 {'prompt_tokens': 543, 'completion_tokens': 599, 'total_tokens': 1142} 20.285146914990037
+100 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.7295298890094273
+101 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6686897930048872
+102 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6683622650016332
+103 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6693005819979589
+104 {'prompt_tokens': 625, 'completion_tokens': 63, 'total_tokens': 688} 0.6700358960079029
+1100 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.7939644870057236
+1101 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5508595810097177
+1102 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5492095169902314
+1103 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5489161809964571
+1104 {'prompt_tokens': 2506, 'completion_tokens': 63, 'total_tokens': 2569} 1.5499539820011705
+200 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 4.377381393001997
+201 {'prompt_tokens': 9475, 'completion_tokens': 63, 'total_tokens': 9538} 4.31735547799326
+2200 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 9.305342881998513
+2201 {'prompt_tokens': 20186, 'completion_tokens': 63, 'total_tokens': 20249} 9.25255425600335
+COLD 0 {'prompt_tokens': 463, 'completion_tokens': 63, 'total_tokens': 526} 0.729122199001722
+COLD 1 {'prompt_tokens': 463, 'completion_tokens': 63, 'total_tokens': 526} 0.672991027997341
+COLD 2 {'prompt_tokens': 463, 'completion_tokens': 63, 'total_tokens': 526} 0.672410992992809
+freetoken-hip-prefill-kv64k-3-off

@@ -1,0 +1,405 @@
+{
+  "before": {
+    "state": "serving",
+    "last_rebuild": null,
+    "geometry": {
+      "num_pages": 65536,
+      "page_size": 1,
+      "moe_cache_size": 10240,
+      "num_mamba_slots": 12,
+      "num_experts": 256,
+      "num_moe_layers": 40,
+      "moe_cache_policy": "lru",
+      "unit_bytes": {
+        "kv_per_token": 20480,
+        "moe_per_expert": 1775616,
+        "mamba_per_slot": 64389120,
+        "swa_per_token": 0
+      },
+      "swa_full_tokens_ratio": 0.0,
+      "swa_page_size": 0,
+      "num_swa_pages": 0,
+      "cache_budget_bytes": 25986439577,
+      "reasoning": null,
+      "limits": {
+        "kv_tokens": {
+          "min": 1,
+          "max": 1268869
+        },
+        "moe_experts": {
+          "min": 256,
+          "max": 10240
+        },
+        "mamba_slots": {
+          "min": 8,
+          "max": 403
+        },
+        "swa_tokens": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  },
+  "requests": [
+    {
+      "index": 0,
+      "elapsed_s": 28.58178162301192,
+      "response": {
+        "ttft_s": 20.285146914990037,
+        "elapsed_s": 28.581711559992982,
+        "decode_tok_s": 72.08452557793211,
+        "usage": {
+          "prompt_tokens": 543,
+          "completion_tokens": 599,
+          "total_tokens": 1142
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique document 0**:\n\n### 1. Content Summary\nThe document consists of a single descriptive statement that is repeated identically 40 times. The core statement is:\n> **\"Section 0 describes a garden with green plants and plentiful sunlight.\"**\n\n### 2. Structural Analysis\n- **Repetition**: The same sentence is duplicated 40 times in a row. There are no variations, additions, or deletions in the text.\n- **Structure**: The document is structured as a list of identical entries, each labeled as \"Section 0.\" This suggests a formatting error, a data generation glitch, or a test case for redundancy.\n- **Labeling**: Each instance is prefixed with \"Section 0,\" implying that the document is divided into sections, but in this case, all sections are identical and refer to the same content.\n\n### 3. Semantic Meaning\nDespite the repetition, the semantic content is simple and consistent:\n- **Subject**: A garden.\n- **Key Features**:\n  - **Green plants**: Indicates healthy, living vegetation.\n  - **Plentiful sunlight**: Suggests an outdoor setting, likely during the day, with optimal conditions for plant growth.\n- **Tone**: The description is neutral and factual, painting a picture of a vibrant, well-lit garden.\n\n### 4. Possible Interpretations\n- **Data Error**: The most likely explanation is a technical error in document generation, where a single section was duplicated excessively due to a loop in a script or a copy-paste mistake.\n- **Stress Test**: The document could be used to test how a system handles redundant or repetitive data.\n- **Emphasis**: In a literary or rhetorical context, extreme repetition might be used to emphasize the simplicity or uniformity of the garden\u2019s description, though this is less likely given the mechanical nature of the repetition.\n\n### 5. Conclusion\n**Unique document 0** is a highly redundant text that describes a sunny garden with green plants. The content itself is straightforward and positive, but the structure is inefficient due to the 40 identical repetitions. For practical purposes, the document can be summarized as:\n> **A single description of a garden with green plants and ample sunlight, repeated 40 times.**<|im_end|>\n<|endoftext|><|im_start|><|im_start|><|im_start|>user\n<|im_end|>\n<|im_start|>assistant\n\n\nThe document you provided is a highly repetitive text that describes a garden with green plants and plentiful sunlight. Here's a detailed breakdown:\n\n### **Content Summary**\n- **Core Description**: The document repeatedly states that \"Section 0 describes a garden with green plants and plentiful sunlight.\"\n- **Repetition**: This exact sentence is repeated 40 times in a row, with no variation or additional information.\n\n### **Structure**\n- **Uniformity**: Each instance"
+      }
+    },
+    {
+      "index": 100,
+      "elapsed_s": 1.5714585679961601,
+      "response": {
+        "ttft_s": 0.7295298890094273,
+        "elapsed_s": 1.5714016210113186,
+        "decode_tok_s": 73.70811872509718,
+        "usage": {
+          "prompt_tokens": 625,
+          "completion_tokens": 63,
+          "total_tokens": 688
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 100.\"\n\n### 1. Content Summary\nThe document consists of a single, repetitive sentence repeated 40 times:\n> **\"Section 100 describes a garden with green plants and plentiful sunlight.\""
+      }
+    },
+    {
+      "index": 101,
+      "elapsed_s": 1.5074571459990693,
+      "response": {
+        "ttft_s": 0.6686897930048872,
+        "elapsed_s": 1.507390860002488,
+        "decode_tok_s": 73.98138626848146,
+        "usage": {
+          "prompt_tokens": 625,
+          "completion_tokens": 63,
+          "total_tokens": 688
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 101.\"\n\n### 1. Content Summary\nThe document consists of a single, repetitive sentence repeated 40 times:\n> **\"Section 101 describes a garden with green plants and plentiful sunlight.\""
+      }
+    },
+    {
+      "index": 102,
+      "elapsed_s": 1.5071087760006776,
+      "response": {
+        "ttft_s": 0.6683622650016332,
+        "elapsed_s": 1.5070555359998252,
+        "decode_tok_s": 73.98128819201803,
+        "usage": {
+          "prompt_tokens": 625,
+          "completion_tokens": 63,
+          "total_tokens": 688
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 102**:\n\n### 1. Content Summary\nThe document consists of a single, repetitive sentence repeated 40 times:\n> *\"Section 102 describes a garden with green plants and plentiful sunlight.\""
+      }
+    },
+    {
+      "index": 103,
+      "elapsed_s": 1.5070676460018149,
+      "response": {
+        "ttft_s": 0.6693005819979589,
+        "elapsed_s": 1.5070169910031836,
+        "decode_tok_s": 74.07202333274319,
+        "usage": {
+          "prompt_tokens": 625,
+          "completion_tokens": 63,
+          "total_tokens": 688
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 103.\"\n\n### 1. Content Summary\nThe document consists of a single, repetitive statement repeated 40 times:\n> **\"Section 103 describes a garden with green plants and plentiful sunlight.\""
+      }
+    },
+    {
+      "index": 104,
+      "elapsed_s": 1.508374395998544,
+      "response": {
+        "ttft_s": 0.6700358960079029,
+        "elapsed_s": 1.5083193720056443,
+        "decode_tok_s": 74.02838158227595,
+        "usage": {
+          "prompt_tokens": 625,
+          "completion_tokens": 63,
+          "total_tokens": 688
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 104.\"\n\n### 1. Content Summary\nThe document consists of a single descriptive statement repeated identically 40 times:\n> **\"Section 104 describes a garden with green plants and plentiful sunlight"
+      }
+    },
+    {
+      "index": 1100,
+      "elapsed_s": 2.6460819940111833,
+      "response": {
+        "ttft_s": 1.7939644870057236,
+        "elapsed_s": 2.6460132539941696,
+        "decode_tok_s": 72.82447533470175,
+        "usage": {
+          "prompt_tokens": 2506,
+          "completion_tokens": 63,
+          "total_tokens": 2569
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 1100**.\n\n### 1. Core Content Summary\nDespite the extreme length of the input, the **entire document consists of a single, repetitive sentence**:\n\n> *\"Section 1100 describes"
+      }
+    },
+    {
+      "index": 1101,
+      "elapsed_s": 2.3991000009991694,
+      "response": {
+        "ttft_s": 1.5508595810097177,
+        "elapsed_s": 2.399029287000303,
+        "decode_tok_s": 73.15813371645399,
+        "usage": {
+          "prompt_tokens": 2506,
+          "completion_tokens": 63,
+          "total_tokens": 2569
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 1101**.\n\n### 1. Core Content Summary\nDespite the extreme repetition, the document contains only one unique piece of information:\n> **\"Section 1101 describes a garden with green plants and"
+      }
+    },
+    {
+      "index": 1102,
+      "elapsed_s": 2.3985302810033318,
+      "response": {
+        "ttft_s": 1.5492095169902314,
+        "elapsed_s": 2.3984608799946727,
+        "decode_tok_s": 73.06425320488982,
+        "usage": {
+          "prompt_tokens": 2506,
+          "completion_tokens": 63,
+          "total_tokens": 2569
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 1102**.\n\n### 1. Core Content Summary\nDespite the extreme repetition, the document contains only one distinct piece of information:\n> **\"Section 1102 describes a garden with green plants and"
+      }
+    },
+    {
+      "index": 1103,
+      "elapsed_s": 2.397109306009952,
+      "response": {
+        "ttft_s": 1.5489161809964571,
+        "elapsed_s": 2.3970411579939537,
+        "decode_tok_s": 73.16269063277537,
+        "usage": {
+          "prompt_tokens": 2506,
+          "completion_tokens": 63,
+          "total_tokens": 2569
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 1103**.\n\n### 1. Core Content Summary\nDespite the extreme length of the input, the **entire document consists of a single sentence repeated 100 times**:\n\n> *\"Section 1"
+      }
+    },
+    {
+      "index": 1104,
+      "elapsed_s": 2.39871043698804,
+      "response": {
+        "ttft_s": 1.5499539820011705,
+        "elapsed_s": 2.3986417870037258,
+        "decode_tok_s": 73.11325945069031,
+        "usage": {
+          "prompt_tokens": 2506,
+          "completion_tokens": 63,
+          "total_tokens": 2569
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 1104**:\n\n### 1. Core Content\nThe document consists of a single, repetitive sentence repeated numerous times:\n> **\"Section 1104 describes a garden with green plants and plentiful sunlight.\""
+      }
+    },
+    {
+      "index": 200,
+      "elapsed_s": 5.269551244011382,
+      "response": {
+        "ttft_s": 4.377381393001997,
+        "elapsed_s": 5.269403876009164,
+        "decode_tok_s": 69.55762509289434,
+        "usage": {
+          "prompt_tokens": 9475,
+          "completion_tokens": 63,
+          "total_tokens": 9538
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 200.\"\n\n### 1. Content Summary\nThe document consists of a single, repetitive sentence repeated approximately **100 times**. The sentence is:\n\n> **\"Section 200 describes a garden with"
+      }
+    },
+    {
+      "index": 201,
+      "elapsed_s": 5.208218361993204,
+      "response": {
+        "ttft_s": 4.31735547799326,
+        "elapsed_s": 5.208095009002136,
+        "decode_tok_s": 69.66112886546239,
+        "usage": {
+          "prompt_tokens": 9475,
+          "completion_tokens": 63,
+          "total_tokens": 9538
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 201.\"\n\n### 1. Core Content\nThe document consists of a single, repetitive sentence repeated approximately **300 times**:\n\n> **\"Section 201 describes a garden with green plants and plentiful"
+      }
+    },
+    {
+      "index": 2200,
+      "elapsed_s": 10.253839676006464,
+      "response": {
+        "ttft_s": 9.305342881998513,
+        "elapsed_s": 10.253547535001417,
+        "decode_tok_s": 65.43354788645246,
+        "usage": {
+          "prompt_tokens": 20186,
+          "completion_tokens": 63,
+          "total_tokens": 20249
+        },
+        "text": "Based on the text provided, here is a detailed analysis and explanation of **Unique Document 2200**.\n\n### 1. Core Content and Subject Matter\nThe document describes a specific scene or setting: **a garden**. The key attributes of this garden are:\n*   **Vegetation:**"
+      }
+    },
+    {
+      "index": 2201,
+      "elapsed_s": 10.198597536989837,
+      "response": {
+        "ttft_s": 9.25255425600335,
+        "elapsed_s": 10.19834109400108,
+        "decode_tok_s": 65.6053129438181,
+        "usage": {
+          "prompt_tokens": 20186,
+          "completion_tokens": 63,
+          "total_tokens": 20249
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of **Unique Document 2201**.\n\n### 1. Core Content Summary\nDespite the extreme length of the input, the **semantic content** of the document is extremely simple and repetitive. The entire document consists of a single sentence repeated"
+      }
+    }
+  ],
+  "cold_requests": [
+    {
+      "rebuild": {
+        "request_id": "bb5aea7d-5db4-4ba8-a6d0-bc7bcc1cfbfb",
+        "status": "ok",
+        "moe_cache_size": 10240,
+        "num_pages": 65536,
+        "mamba_slots": 12,
+        "num_swa_pages": 0,
+        "error": null
+      },
+      "response": {
+        "ttft_s": 0.729122199001722,
+        "elapsed_s": 1.8317275440058438,
+        "decode_tok_s": 56.266506358385755,
+        "usage": {
+          "prompt_tokens": 463,
+          "completion_tokens": 63,
+          "total_tokens": 526
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Cold document 0.\"\n\n### 1. Content Summary\nThe document consists of a single, repetitive sentence repeated 40 times:\n> **\"Section describes a garden with green plants and plentiful sunlight.\"**\n\nThere is no variation"
+      }
+    },
+    {
+      "rebuild": {
+        "request_id": "e0d09231-eab3-480f-adbf-3526b6e68833",
+        "status": "ok",
+        "moe_cache_size": 10240,
+        "num_pages": 65536,
+        "mamba_slots": 12,
+        "num_swa_pages": 0,
+        "error": null
+      },
+      "response": {
+        "ttft_s": 0.672991027997341,
+        "elapsed_s": 1.7738781429943629,
+        "decode_tok_s": 56.35163628300898,
+        "usage": {
+          "prompt_tokens": 463,
+          "completion_tokens": 63,
+          "total_tokens": 526
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Cold document 1.\"\n\n### 1. Content Summary\nThe document consists of a single descriptive statement repeated identically 40 times. The statement is:\n\n> **\"Section describes a garden with green plants and plentiful sunlight.\"**"
+      }
+    },
+    {
+      "rebuild": {
+        "request_id": "85597333-a8e7-4830-ad76-42ecb3299810",
+        "status": "ok",
+        "moe_cache_size": 10240,
+        "num_pages": 65536,
+        "mamba_slots": 12,
+        "num_swa_pages": 0,
+        "error": null
+      },
+      "response": {
+        "ttft_s": 0.672410992992809,
+        "elapsed_s": 1.7745884869946167,
+        "decode_tok_s": 56.288845067814634,
+        "usage": {
+          "prompt_tokens": 463,
+          "completion_tokens": 63,
+          "total_tokens": 526
+        },
+        "text": "Based on the text provided, here is a detailed explanation and analysis of \"Cold document 2.\"\n\n### 1. Content Summary\nThe document consists of a single, repetitive sentence repeated 40 times:\n> **\"Section describes a garden with green plants and plentiful sunlight.\"**\n\n### 2."
+      }
+    }
+  ],
+  "after": {
+    "state": "serving",
+    "last_rebuild": {
+      "request_id": "85597333-a8e7-4830-ad76-42ecb3299810",
+      "status": "ok",
+      "moe_cache_size": 10240,
+      "num_pages": 65536,
+      "mamba_slots": 12,
+      "num_swa_pages": 0,
+      "error": null
+    },
+    "geometry": {
+      "num_pages": 65536,
+      "page_size": 1,
+      "moe_cache_size": 10240,
+      "num_mamba_slots": 12,
+      "num_experts": 256,
+      "num_moe_layers": 40,
+      "moe_cache_policy": "lru",
+      "unit_bytes": {
+        "kv_per_token": 20480,
+        "moe_per_expert": 1775616,
+        "mamba_per_slot": 64389120,
+        "swa_per_token": 0
+      },
+      "swa_full_tokens_ratio": 0.0,
+      "swa_page_size": 0,
+      "num_swa_pages": 0,
+      "cache_budget_bytes": 25986439577,
+      "reasoning": {
+        "gears": [
+          "off",
+          "on"
+        ],
+        "default": "on",
+        "kwargs": {
+          "off": {
+            "enable_thinking": false,
+            "thinking_mode": "disabled"
+          },
+          "on": {
+            "enable_thinking": true,
+            "thinking_mode": "enabled"
+          }
+        }
+      },
+      "limits": {
+        "kv_tokens": {
+          "min": 1,
+          "max": 1268869
+        },
+        "moe_experts": {
+          "min": 256,
+          "max": 10240
+        },
+        "mamba_slots": {
+          "min": 8,
+          "max": 403
+        },
+        "swa_tokens": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  }
+}

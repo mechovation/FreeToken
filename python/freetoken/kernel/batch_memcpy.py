@@ -28,6 +28,7 @@ def _probe(fn) -> None:
     src = torch.arange(16, dtype=torch.uint8).pin_memory()
     dst = torch.zeros(16, dtype=torch.uint8, device="cuda")
     stream = torch.cuda.Stream()
+    stream.wait_stream(torch.cuda.current_stream())
     fn(
         torch.tensor([dst.data_ptr()]),
         torch.tensor([src.data_ptr()]),
@@ -36,7 +37,7 @@ def _probe(fn) -> None:
     )
     stream.synchronize()
     if not torch.equal(dst.cpu(), src):
-        raise RuntimeError("cudaMemcpyBatchAsync probe copied wrong bytes")
+        raise RuntimeError("batch memcpy probe copied wrong bytes")
 
 
 def load_batch_memcpy():
@@ -44,10 +45,14 @@ def load_batch_memcpy():
 
     The 8-argument cudaMemcpyBatchAsync signature this binding uses is CUDA 13.0's
     (12.8/12.9 had an extra failIdx parameter); gate on the torch runtime version
-    before paying for the JIT build, then verify with a real copy.
+    before paying for the JIT build, then verify with a real copy. HIP >= 7.2
+    uses its nine-argument API with unsupported attributes omitted.
     """
-    cuda = torch.version.cuda
-    if cuda is None or tuple(int(x) for x in cuda.split(".")[:2]) < (13, 0):
+    cuda, hip = torch.version.cuda, torch.version.hip
+    if hip is not None:
+        if tuple(int(x) for x in hip.split(".")[:2]) < (7, 2):
+            raise RuntimeError(f"HIP batch memcpy requires HIP >= 7.2 (torch built with {hip})")
+    elif cuda is None or tuple(int(x) for x in cuda.split(".")[:2]) < (13, 0):
         raise RuntimeError(f"cudaMemcpyBatchAsync binding requires CUDA >= 13.0 (torch built with {cuda})")
     fn = _jit_batch_memcpy_module().batch_memcpy
     _probe(fn)
@@ -60,10 +65,10 @@ def batch_memcpy_jit(
     sizes: torch.Tensor,
     stream: int,
 ) -> None:
-    """Enqueue one cudaMemcpyBatchAsync of ``len(sizes)`` independent copies.
+    """Enqueue one CUDA/HIP batch of ``len(sizes)`` independent copies.
 
     ``dst_ptrs``/``src_ptrs``/``sizes`` are same-length CPU int64 tensors of raw
-    addresses and byte counts; ``stream`` is a raw cudaStream_t handle
+    addresses and byte counts; ``stream`` is a raw CUDA/HIP stream handle
     (``torch.cuda.Stream.cuda_stream``), which must not be the legacy NULL stream.
     """
     load_batch_memcpy()(dst_ptrs, src_ptrs, sizes, stream)

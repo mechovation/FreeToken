@@ -1,0 +1,205 @@
+{
+  "before": {
+    "state": "serving",
+    "last_rebuild": null,
+    "geometry": {
+      "num_pages": 65536,
+      "page_size": 1,
+      "moe_cache_size": 10240,
+      "num_mamba_slots": 12,
+      "num_experts": 256,
+      "num_moe_layers": 40,
+      "moe_cache_policy": "lru",
+      "unit_bytes": {
+        "kv_per_token": 20480,
+        "moe_per_expert": 1775616,
+        "mamba_per_slot": 64389120,
+        "swa_per_token": 0
+      },
+      "swa_full_tokens_ratio": 0.0,
+      "swa_page_size": 0,
+      "num_swa_pages": 0,
+      "cache_budget_bytes": 25986439577,
+      "reasoning": null,
+      "limits": {
+        "kv_tokens": {
+          "min": 1,
+          "max": 1268869
+        },
+        "moe_experts": {
+          "min": 256,
+          "max": 10240
+        },
+        "mamba_slots": {
+          "min": 8,
+          "max": 403
+        },
+        "swa_tokens": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  },
+  "requests": [
+    {
+      "index": 0,
+      "elapsed_s": 28.164762496002368,
+      "response": {
+        "id": "chatcmpl-0",
+        "object": "chat.completion",
+        "created": 1789331010,
+        "model": "qwen3.6:35b-nvfp4",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "The document you provided is a highly repetitive text that describes a garden with green plants and plentiful sunlight. Here's a detailed breakdown:\n\n### **Content Summary**\n- **Core Description**: The document repeatedly states that \"Section 0 describes a garden with green plants and plentiful sunlight.\"\n- **Repetition**: This exact sentence is repeated 40 times in a row, with no variation or additional information.\n\n### **Structure**\n- **Uniformity**: Each instance",
+              "reasoning_content": "Based on the text provided, here is a detailed explanation and analysis of **Unique document 0**:\n\n### 1. Content Summary\nThe document consists of a single descriptive statement that is repeated identically 40 times. The core statement is:\n> **\"Section 0 describes a garden with green plants and plentiful sunlight.\"**\n\n### 2. Structural Analysis\n- **Repetition**: The same sentence is duplicated 40 times in a row. There are no variations, additions, or deletions in the text.\n- **Structure**: The document is structured as a list of identical entries, each labeled as \"Section 0.\" This suggests a formatting error, a data generation glitch, or a test case for redundancy.\n- **Labeling**: Each instance is prefixed with \"Section 0,\" implying that the document is divided into sections, but in this case, all sections are identical and refer to the same content.\n\n### 3. Semantic Meaning\nDespite the repetition, the semantic content is simple and consistent:\n- **Subject**: A garden.\n- **Key Features**:\n  - **Green plants**: Indicates healthy, living vegetation.\n  - **Plentiful sunlight**: Suggests an outdoor setting, likely during the day, with optimal conditions for plant growth.\n- **Tone**: The description is neutral and factual, painting a picture of a vibrant, well-lit garden.\n\n### 4. Possible Interpretations\n- **Data Error**: The most likely explanation is a technical error in document generation, where a single section was duplicated excessively due to a loop in a script or a copy-paste mistake.\n- **Stress Test**: The document could be used to test how a system handles redundant or repetitive data.\n- **Emphasis**: In a literary or rhetorical context, extreme repetition might be used to emphasize the simplicity or uniformity of the garden\u2019s description, though this is less likely given the mechanical nature of the repetition.\n\n### 5. Conclusion\n**Unique document 0** is a highly redundant text that describes a sunny garden with green plants. The content itself is straightforward and positive, but the structure is inefficient due to the 40 identical repetitions. For practical purposes, the document can be summarized as:\n> **A single description of a garden with green plants and ample sunlight, repeated 40 times.**<|im_end|>\n<|endoftext|><|im_start|><|im_start|><|im_start|>user\n<|im_end|>\n<|im_start|>assistant"
+            },
+            "finish_reason": "length"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 543,
+          "completion_tokens": 599,
+          "total_tokens": 1142
+        }
+      }
+    },
+    {
+      "index": 1,
+      "elapsed_s": 1.5082754250033759,
+      "response": {
+        "id": "chatcmpl-1",
+        "object": "chat.completion",
+        "created": 1789331011,
+        "model": "qwen3.6:35b-nvfp4",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 1.\"\n\n### 1. Content Summary\nThe document consists of a single descriptive statement repeated identically 40 times. The statement is:\n> **\"Section 1 describes a garden with green plants and plentiful sunlight"
+            },
+            "finish_reason": "length"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 543,
+          "completion_tokens": 63,
+          "total_tokens": 606
+        }
+      }
+    },
+    {
+      "index": 2,
+      "elapsed_s": 4.467584910002188,
+      "response": {
+        "id": "chatcmpl-2",
+        "object": "chat.completion",
+        "created": 1789331016,
+        "model": "qwen3.6:35b-nvfp4",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Based on the text provided, here is a detailed explanation and analysis of \"Unique document 2.\"\n\n### 1. Content Summary\nThe document consists entirely of a single sentence repeated numerous times. The sentence is:\n> **\"Section 2 describes a garden with green plants and plentiful sunlight.\"**\n\n###"
+            },
+            "finish_reason": "length"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 9123,
+          "completion_tokens": 63,
+          "total_tokens": 9186
+        }
+      }
+    },
+    {
+      "index": 3,
+      "elapsed_s": 7.298904681985732,
+      "response": {
+        "id": "chatcmpl-3",
+        "object": "chat.completion",
+        "created": 1789331023,
+        "model": "qwen3.6:35b-nvfp4",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Based on the text provided, here is a detailed analysis and explanation of \"Unique document 3.\"\n\n### 1. Content Summary\nThe document consists of a single sentence repeated numerous times. The sentence is:\n> **\"Section 3 describes a garden with green plants and plentiful sunlight.\"**\n\n### "
+            },
+            "finish_reason": "length"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 18223,
+          "completion_tokens": 63,
+          "total_tokens": 18286
+        }
+      }
+    }
+  ],
+  "after": {
+    "state": "serving",
+    "last_rebuild": null,
+    "geometry": {
+      "num_pages": 65536,
+      "page_size": 1,
+      "moe_cache_size": 10240,
+      "num_mamba_slots": 12,
+      "num_experts": 256,
+      "num_moe_layers": 40,
+      "moe_cache_policy": "lru",
+      "unit_bytes": {
+        "kv_per_token": 20480,
+        "moe_per_expert": 1775616,
+        "mamba_per_slot": 64389120,
+        "swa_per_token": 0
+      },
+      "swa_full_tokens_ratio": 0.0,
+      "swa_page_size": 0,
+      "num_swa_pages": 0,
+      "cache_budget_bytes": 25986439577,
+      "reasoning": {
+        "gears": [
+          "off",
+          "on"
+        ],
+        "default": "on",
+        "kwargs": {
+          "off": {
+            "enable_thinking": false,
+            "thinking_mode": "disabled"
+          },
+          "on": {
+            "enable_thinking": true,
+            "thinking_mode": "enabled"
+          }
+        }
+      },
+      "limits": {
+        "kv_tokens": {
+          "min": 1,
+          "max": 1268869
+        },
+        "moe_experts": {
+          "min": 256,
+          "max": 10240
+        },
+        "mamba_slots": {
+          "min": 8,
+          "max": 403
+        },
+        "swa_tokens": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  }
+}

@@ -587,7 +587,7 @@ def parse_args(
         help=(
             "During prefill prefetch, copy cache-resident experts device-side into "
             "the double buffer and stream only the misses over PCIe "
-            "(cudaMemcpyBatchAsync, CUDA >= 13.0). Effective with "
+            "(batch memcpy, CUDA >= 13.0 or HIP >= 7.2). Effective with "
             "--moe-cache-size > 2 * num_experts."
         ),
     )

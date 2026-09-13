@@ -1,0 +1,99 @@
+{
+  "amd_reuse_and_graph_tests": {
+    "passed": 11,
+    "seconds": 8.22,
+    "log": "amd-tests.txt"
+  },
+  "cuda_reuse_tests": {
+    "passed": 8,
+    "seconds": 20.92,
+    "evidence": "captured tool stdout"
+  },
+  "full_model_bank_and_expert_checks": 720,
+  "full_model_exact_message_matches": 4,
+  "expert_output_tolerance": {
+    "rtol": 0.001,
+    "atol": 0.001
+  },
+  "auto_kv_tokens": 340189,
+  "graph_oracles": [
+    {
+      "batch_size": 1,
+      "steps": 1,
+      "logits_max_abs": 0.0,
+      "kv_gdn_state": "pass",
+      "moe": {
+        "layer_calls": 160,
+        "active_per_layer": 8.06875,
+        "missing_per_layer": 6.06875,
+        "miss_rate": 0.7521301316808675,
+        "fetched_per_layer": 0.0,
+        "cpu_per_layer": 6.06875,
+        "fetch_rate": 0.0,
+        "prefill_hit_rows": 0,
+        "prefill_rows": 30720
+      }
+    },
+    {
+      "batch_size": 1,
+      "steps": 32,
+      "logits_max_abs": 0.0,
+      "kv_gdn_state": "pass",
+      "moe": {
+        "layer_calls": 2640,
+        "active_per_layer": 8.004166666666666,
+        "missing_per_layer": 1.362121212121212,
+        "miss_rate": 0.1701765179120723,
+        "fetched_per_layer": 0.0,
+        "cpu_per_layer": 1.362121212121212,
+        "fetch_rate": 0.0,
+        "prefill_hit_rows": 0,
+        "prefill_rows": 30720
+      }
+    },
+    {
+      "batch_size": 2,
+      "steps": 1,
+      "logits_max_abs": 0.0,
+      "kv_gdn_state": "pass",
+      "moe": {
+        "layer_calls": 5240,
+        "active_per_layer": 8.005152671755726,
+        "missing_per_layer": 1.0133587786259541,
+        "miss_rate": 0.12658831382458818,
+        "fetched_per_layer": 0.0,
+        "cpu_per_layer": 1.0133587786259541,
+        "fetch_rate": 0.0,
+        "prefill_hit_rows": 7642,
+        "prefill_rows": 51200
+      }
+    },
+    {
+      "batch_size": 2,
+      "steps": 32,
+      "logits_max_abs": 0.0,
+      "kv_gdn_state": "pass",
+      "moe": {
+        "layer_calls": 7720,
+        "active_per_layer": 9.936139896373057,
+        "missing_per_layer": 0.7525906735751295,
+        "miss_rate": 0.07574276141681985,
+        "fetched_per_layer": 0.0,
+        "cpu_per_layer": 0.7525906735751295,
+        "fetch_rate": 0.0,
+        "prefill_hit_rows": 7642,
+        "prefill_rows": 51200
+      }
+    }
+  ],
+  "steady_reserved_bytes": [
+    23806869504,
+    23806869504,
+    23806869504,
+    23806869504,
+    23806869504,
+    23806869504
+  ],
+  "lifecycle": "passed",
+  "prefix_reused_tokens": 4480
+}

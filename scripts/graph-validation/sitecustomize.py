@@ -87,8 +87,12 @@ if (
         torch.cuda.synchronize()
         torch.testing.assert_close(actual, eager[:bs], rtol=1e-3, atol=1e-3)
         torch.testing.assert_close(kv[:, :, loc], after[0], rtol=1e-3, atol=1e-3)
-        torch.testing.assert_close(conv, after[1], rtol=1e-3, atol=1e-3)
-        torch.testing.assert_close(recurrent, after[2], rtol=1e-3, atol=1e-3)
+        # assert_close needs several tensor-sized temporaries. Comparing the
+        # full recurrent pool at auto-sized KV capacity can exhaust VRAM even
+        # though serving fits. Check every layer with unchanged tolerances.
+        for state, expected in ((conv, after[1]), (recurrent, after[2])):
+            for layer in range(state.shape[0]):
+                torch.testing.assert_close(state[layer], expected[layer], rtol=1e-3, atol=1e-3)
         kv[:, :, loc] = after[0]
         conv.copy_(after[1])
         recurrent.copy_(after[2])

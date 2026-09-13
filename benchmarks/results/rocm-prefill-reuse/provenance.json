@@ -1,0 +1,12 @@
+{
+  "base_git_commit": "185a1ddf7c6e64e2f2bde59bd067f2fb3cadbadd",
+  "source_sha256": {
+    "python/freetoken/kernel/batch_memcpy.py": "1a4bd7800955730cfc592a08c9da7a754af143e0000cb76cc90b281d935ac4c2",
+    "python/freetoken/kernel/csrc/jit/batch_memcpy.cuh": "66afd9d98d64b6fa64899bbb1e019b2abd06e49ac2d6d9d25fb5e0383dc9fbac",
+    "python/freetoken/moe/offload_cache.py": "224e7669edc2e84d6ff0f895bc600afb027805f6bcd9ed99c88f5c13c21c100c",
+    "python/freetoken/server/args.py": "1c9f4a22b3e1ac3f7081af6909744d66280e0b4db8ab98df0536e81ce19b10c1"
+  },
+  "rocm": "7.2.26015",
+  "torch": "2.11.0+rocm7.2",
+  "model_snapshot": "1355db6a052410cfd62085d94b58866fd0f2c3c5"
+}

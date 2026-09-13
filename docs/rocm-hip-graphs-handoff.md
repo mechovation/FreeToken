@@ -50,6 +50,10 @@ Read [full results](rocm-hip-graphs-results.md) and the raw
 
 ## Current services and rollback
 
+Prefill-reuse follow-up: all experiment containers are stopped. The user stopped
+AMD llama-swap during that work; it was left stopped. The service notes below
+describe the original HIP-graph checkpoint.
+
 - `freetoken-rocm`: **stopped after validation**, now configured for
   `freetoken:rocm-hip-graphs`, graph max 2, requests 2, KV floor 65536.
 - `freetoken-nvidia`: **stopped at the user's request after validation**;
@@ -91,8 +95,14 @@ The user's CUDA/ROCm parity question is audited in the results document:
 
 1. Validate the optional fused `triton_kernels` router on AMD; currently absent,
    with a working separate-operation PyTorch fallback. Do not assume it fails.
+   Follow-up: [router validation](rocm-fused-router-results.md) passed on AMD,
+   but the existing fused wrapper was slower in router-only timing; defaults
+   remain unchanged.
 2. Measure/port prefill reuse of already-resident experts. Current optional
-   batched-copy implementation depends on CUDA; it was off on both GPUs.
+   batched-copy implementation depended on CUDA; it was off on both GPUs.
+   Follow-up: [prefill reuse results](rocm-prefill-reuse-results.md) describe
+   the opt-in HIP binding and repeated warm-prefill TTFT improvements of
+   12–43%. Production defaults remain unchanged.
 3. Investigate native AMD FP8 handling and GPU-specific kernel tuning after
    profiling. The current emulated FP8 path also applies to the RTX 3060.
 

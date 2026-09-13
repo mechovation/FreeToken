@@ -1,0 +1,230 @@
+[
+  {
+    "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+    "model": {
+      "id": "qwen3.6:35b-nvfp4",
+      "ctx": 262144,
+      "attn": "hybrid_linear",
+      "moe": true,
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      }
+    },
+    "uptime_s": 100,
+    "kv": {
+      "used_pages": 0,
+      "total_pages": 65536,
+      "page_size": 1
+    },
+    "mamba": {
+      "used_slots": 0,
+      "total_slots": 14
+    },
+    "swa": null,
+    "vram_bytes": 23806869504,
+    "throughput": {
+      "decode_tps": 36.3,
+      "prefill_tps": 2229.9
+    },
+    "requests": {
+      "active": 0,
+      "completed": 114,
+      "p95_ms": 4014,
+      "ttft_mean_ms": 0,
+      "prompt_tokens_total": 12331,
+      "completion_tokens_total": 2238
+    }
+  },
+  {
+    "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+    "model": {
+      "id": "qwen3.6:35b-nvfp4",
+      "ctx": 262144,
+      "attn": "hybrid_linear",
+      "moe": true,
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      }
+    },
+    "uptime_s": 101,
+    "kv": {
+      "used_pages": 0,
+      "total_pages": 65536,
+      "page_size": 1
+    },
+    "mamba": {
+      "used_slots": 0,
+      "total_slots": 14
+    },
+    "swa": null,
+    "vram_bytes": 23806869504,
+    "throughput": {
+      "decode_tps": 35.3,
+      "prefill_tps": 1530.8
+    },
+    "requests": {
+      "active": 0,
+      "completed": 115,
+      "p95_ms": 4014,
+      "ttft_mean_ms": 0,
+      "prompt_tokens_total": 12361,
+      "completion_tokens_total": 2269
+    }
+  },
+  {
+    "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+    "model": {
+      "id": "qwen3.6:35b-nvfp4",
+      "ctx": 262144,
+      "attn": "hybrid_linear",
+      "moe": true,
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      }
+    },
+    "uptime_s": 102,
+    "kv": {
+      "used_pages": 0,
+      "total_pages": 65536,
+      "page_size": 1
+    },
+    "mamba": {
+      "used_slots": 0,
+      "total_slots": 14
+    },
+    "swa": null,
+    "vram_bytes": 23806869504,
+    "throughput": {
+      "decode_tps": 34.7,
+      "prefill_tps": 1169.9
+    },
+    "requests": {
+      "active": 0,
+      "completed": 116,
+      "p95_ms": 4014,
+      "ttft_mean_ms": 0,
+      "prompt_tokens_total": 12391,
+      "completion_tokens_total": 2300
+    }
+  },
+  {
+    "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+    "model": {
+      "id": "qwen3.6:35b-nvfp4",
+      "ctx": 262144,
+      "attn": "hybrid_linear",
+      "moe": true,
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      }
+    },
+    "uptime_s": 103,
+    "kv": {
+      "used_pages": 0,
+      "total_pages": 65536,
+      "page_size": 1
+    },
+    "mamba": {
+      "used_slots": 0,
+      "total_slots": 14
+    },
+    "swa": null,
+    "vram_bytes": 23806869504,
+    "throughput": {
+      "decode_tps": 32.2,
+      "prefill_tps": 949.0
+    },
+    "requests": {
+      "active": 0,
+      "completed": 117,
+      "p95_ms": 4014,
+      "ttft_mean_ms": 0,
+      "prompt_tokens_total": 12421,
+      "completion_tokens_total": 2331
+    }
+  },
+  {
+    "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+    "model": {
+      "id": "qwen3.6:35b-nvfp4",
+      "ctx": 262144,
+      "attn": "hybrid_linear",
+      "moe": true,
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      }
+    },
+    "uptime_s": 104,
+    "kv": {
+      "used_pages": 0,
+      "total_pages": 65536,
+      "page_size": 1
+    },
+    "mamba": {
+      "used_slots": 0,
+      "total_slots": 14
+    },
+    "swa": null,
+    "vram_bytes": 23806869504,
+    "throughput": {
+      "decode_tps": 33.8,
+      "prefill_tps": 31.3
+    },
+    "requests": {
+      "active": 0,
+      "completed": 118,
+      "p95_ms": 4014,
+      "ttft_mean_ms": 0,
+      "prompt_tokens_total": 12451,
+      "completion_tokens_total": 2362
+    }
+  },
+  {
+    "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+    "model": {
+      "id": "qwen3.6:35b-nvfp4",
+      "ctx": 262144,
+      "attn": "hybrid_linear",
+      "moe": true,
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      }
+    },
+    "uptime_s": 105,
+    "kv": {
+      "used_pages": 0,
+      "total_pages": 65536,
+      "page_size": 1
+    },
+    "mamba": {
+      "used_slots": 0,
+      "total_slots": 14
+    },
+    "swa": null,
+    "vram_bytes": 23806869504,
+    "throughput": {
+      "decode_tps": 34.4,
+      "prefill_tps": 31.6
+    },
+    "requests": {
+      "active": 0,
+      "completed": 119,
+      "p95_ms": 2880,
+      "ttft_mean_ms": 0,
+      "prompt_tokens_total": 12481,
+      "completion_tokens_total": 2393
+    }
+  }
+]

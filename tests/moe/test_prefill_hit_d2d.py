@@ -26,7 +26,10 @@ def _cuda_at_least(major: int, minor: int) -> bool:
     return tuple(int(x) for x in cuda.split(".")[:2]) >= (major, minor)
 
 BATCH_API = pytest.mark.skipif(
-    not _cuda_at_least(13, 0), reason="the cudaMemcpyBatchAsync binding needs CUDA >= 13.0"
+    not (_cuda_at_least(13, 0) or (
+        torch.version.hip is not None
+        and tuple(int(x) for x in torch.version.hip.split(".")[:2]) >= (7, 2)
+    )), reason="batch memcpy needs CUDA >= 13.0 or HIP >= 7.2"
 )
 
 NUM_LAYERS, E, CACHE_SIZE = 3, 8, 24  # hit region = slots [16, 24)
@@ -71,6 +74,7 @@ def test_batch_memcpy_roundtrip():
     src_ptrs = torch.tensor([src[p].data_ptr() for p in perm.tolist()], dtype=torch.int64)
     sizes = torch.full((rows,), feat, dtype=torch.int64)
     stream = torch.cuda.Stream()
+    stream.wait_stream(torch.cuda.current_stream())
     with torch.cuda.stream(stream):
         batch_memcpy_jit(dst_ptrs, src_ptrs, sizes, stream.cuda_stream)
     stream.synchronize()
@@ -151,3 +155,58 @@ def test_prefill_hit_d2d_noop_without_spare_slots():
     torch.cuda.synchronize()
     for view, (name, per_layer) in zip(views, sources.items()):
         assert torch.equal(view.cpu(), per_layer[0]), name
+
+
+@CUDA
+@JIT
+@BATCH_API
+@pytest.mark.parametrize("nhit", [0, 4, 8])
+def test_nvfp4_reuse_buffer_wraps_and_rebuild(nhit):
+    """Exercise real large-bank gathers plus whole small-bank copies.
+
+    The original BF16 fixtures are below the small-bank cutoff and therefore
+    cannot detect broken D2D gathers. These row sizes match Qwen3.6 NVFP4.
+    """
+    cache = OffloadMoeCache(
+        num_layers=3, num_experts=E, cache_size=5 * E,
+        device=torch.device("cuda"), prefill_overlap=True,
+        prefill_hit_d2d=True, quant_format="nvfp4",
+    )
+    sizes = (1048576, 131072, 2048, 524288, 65536, 4096)
+    sources = {name: [torch.randint(0, 256, (E, size), dtype=torch.uint8).pin_memory()
+                      for _ in range(3)]
+               for name, size in zip(cache.bank_schema, sizes)}
+    cache.set_bank_sources(sources)
+    for capacity in (5 * E, 2 * E, 5 * E):
+        if capacity != cache.cache_size:
+            cache.rebuild(capacity)
+        for chunk in range(3):
+            torch.cuda.synchronize()
+            cache.slot_for_id.fill_(-1)
+            cache.id_of_slot.fill_(-1)
+            # Rotate the expert set between chunks; every layer has independent
+            # stable slots. Volatile residents are poisoned and must be refetched.
+            selected = [(2 * i + i // 4 + chunk) % E for i in range(nhit)]
+            for layer in range(3):
+                if capacity > 2 * E:
+                    for index, expert in enumerate(selected):
+                        _seed_resident(cache, sources, layer, expert, 2 * E + layer * E + index)
+                expert = next((i for i in range(E) if i not in selected), None)
+                if expert is not None:
+                    _seed_resident(cache, sources, layer, expert, layer)
+                    for bank in cache.bank_caches.values():
+                        bank[layer].bitwise_not_()
+            cache.begin_prefill()
+            assert cache._prefill_hit_d2d_active == (capacity > 2 * E)
+            outputs = []
+            for layer in range(3):
+                cache.prefetch_prefill_layer(layer)
+                cache.prefetch_prefill_layer(layer + 1)
+                outputs.append([v.clone() for v in cache.wait_prefill_layer(layer)])
+                cache.release_prefill_layer(layer)
+            # Copies/clones above are ordered only by the production stream
+            # protocol, including reuse of buffer 0 for layer 2.
+            torch.cuda.synchronize()
+            for layer, views in enumerate(outputs):
+                for view, per_layer in zip(views, sources.values()):
+                    assert torch.equal(view.cpu(), per_layer[layer])

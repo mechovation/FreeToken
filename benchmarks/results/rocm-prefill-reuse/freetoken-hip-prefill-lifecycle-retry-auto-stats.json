@@ -1,0 +1,38 @@
+{
+  "instance_id": "0e974b21-d003-4d49-95b4-b7d32e114cab",
+  "model": {
+    "id": "qwen3.6:35b-nvfp4",
+    "ctx": 262144,
+    "attn": "hybrid_linear",
+    "moe": true,
+    "sampling": {
+      "temperature": 1.0,
+      "top_k": 20,
+      "top_p": 0.95
+    }
+  },
+  "uptime_s": 40,
+  "kv": {
+    "used_pages": 0,
+    "total_pages": 340189,
+    "page_size": 1
+  },
+  "mamba": {
+    "used_slots": 0,
+    "total_slots": 12
+  },
+  "swa": null,
+  "vram_bytes": 30821842944,
+  "throughput": {
+    "decode_tps": 52.1,
+    "prefill_tps": 0.0
+  },
+  "requests": {
+    "active": 0,
+    "completed": 3,
+    "p95_ms": 24555,
+    "ttft_mean_ms": 0,
+    "prompt_tokens_total": 90,
+    "completion_tokens_total": 285
+  }
+}

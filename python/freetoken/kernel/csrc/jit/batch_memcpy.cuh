@@ -8,7 +8,8 @@
 #include <cstddef>
 #include <cstdint>
 
-// Host wrapper over cudaMemcpyBatchAsync (CUDA >= 13.0, the 8-argument signature;
+// Host wrapper over hipMemcpyBatchAsync (HIP >= 7.2) or cudaMemcpyBatchAsync
+// (CUDA >= 13.0, the 8-argument signature;
 // 12.8/12.9 carried an extra failIdx parameter): enqueue N independent
 // pointer-to-pointer copies with ONE runtime call, on an explicit (non-legacy)
 // stream. Callers hand pre-resolved raw addresses; copies within a batch are
@@ -20,7 +21,9 @@ struct BatchMemcpy {
         tvm::ffi::TensorView sizes,
         int64_t stream_handle
     ) {
-#if CUDART_VERSION >= 13000
+#if (defined(__HIP_PLATFORM_AMD__) && \
+     (HIP_VERSION_MAJOR > 7 || (HIP_VERSION_MAJOR == 7 && HIP_VERSION_MINOR >= 2))) || \
+    CUDART_VERSION >= 13000
         using namespace host;
         auto N = SymbolicSize{"batch length"};
         auto ptr_dtype = SymbolicDType{};
@@ -34,7 +37,19 @@ struct BatchMemcpy {
         if (n == 0) {
             return;
         }
-        RuntimeCheck(stream_handle != 0, "cudaMemcpyBatchAsync rejects the legacy NULL stream");
+        RuntimeCheck(stream_handle != 0, "batch memcpy requires an explicit non-NULL stream");
+#if defined(__HIP_PLATFORM_AMD__)
+        // HIP 7.2 has the nine-argument API. Attributes are unsupported; copies
+        // use stream ordering. Keep all entries independent, as on CUDA.
+        std::size_t fail_idx = 0;
+        CUDA_CHECK(::hipMemcpyBatchAsync(
+            reinterpret_cast<void**>(dst_ptrs.data_ptr()),
+            reinterpret_cast<void**>(src_ptrs.data_ptr()),
+            reinterpret_cast<std::size_t*>(sizes.data_ptr()),
+            n, nullptr, nullptr, 0, &fail_idx,
+            reinterpret_cast<::hipStream_t>(stream_handle)
+        ));
+#else
         auto attr = ::cudaMemcpyAttributes{};
         attr.srcAccessOrder = ::cudaMemcpySrcAccessOrderStream;
         std::size_t attr_idx = 0;
@@ -48,10 +63,11 @@ struct BatchMemcpy {
             1,
             reinterpret_cast<::cudaStream_t>(stream_handle)
         ));
+#endif
 #else
         ::host::panic(
             std::source_location::current(),
-            "this cudaMemcpyBatchAsync binding requires CUDA >= 13.0 at build time"
+            "batch memcpy requires CUDA >= 13.0 or HIP >= 7.2 at build time"
         );
 #endif
     }

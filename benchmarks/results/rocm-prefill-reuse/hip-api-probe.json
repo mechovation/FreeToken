@@ -1,0 +1,28 @@
+{
+  "torch": "2.11.0+rocm7.2",
+  "hip": "7.2.26015",
+  "runtime": "/opt/freetoken-venv/lib/python3.12/site-packages/torch/lib/libamdhip64.so",
+  "copies": [
+    {
+      "bytes_per_copy": 16,
+      "status": 0,
+      "error": "no error",
+      "failure_index": 18446744073709551615,
+      "correct": true
+    },
+    {
+      "bytes_per_copy": 1024,
+      "status": 0,
+      "error": "no error",
+      "failure_index": 18446744073709551615,
+      "correct": true
+    },
+    {
+      "bytes_per_copy": 1048576,
+      "status": 0,
+      "error": "no error",
+      "failure_index": 18446744073709551615,
+      "correct": true
+    }
+  ]
+}

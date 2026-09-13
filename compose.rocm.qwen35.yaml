@@ -1,9 +1,0 @@
-# Apply after compose.rocm.yaml; intentionally replaces its small-model command.
-services:
-  freetoken-rocm:
-    environment:
-      MODEL_PATH: nvidia/Qwen3.6-35B-A3B-NVFP4
-      SERVED_MODEL_NAME: Qwen3.6-35B-A3B-NVFP4
-      MOE_BACKEND: offload
-      KV_RESERVE_TOKENS: ${ROCM_KV_RESERVE_TOKENS:-8192}
-    command: ["serve", "--attention-backend", "triton", "--moe-cache-auto", "--cuda-graph-max-bs", "${ROCM_GRAPH_MAX_BS:-0}"]

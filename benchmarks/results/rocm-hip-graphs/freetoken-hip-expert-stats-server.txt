@@ -1,0 +1,96 @@
+[1m[2026-09-13|00:33:35][0m [32mINFO    [0m Parsed arguments:
+ServerArgs(model_path='/root/.cache/huggingface/hub/models--nvidia--Qwen3.6-35B-A3B-NVFP4/snapshots/1355db6a052410cfd62085d94b58866fd0f2c3c5', tp_info=DistributedInfo(rank=0, size=1), dtype=torch.bfloat16, max_running_req=2, attention_backend='triton', moe_backend='offload', nvfp4_backend='triton', expert_load='serial', moe_cache_size=0, moe_cache_rate=None, moe_cache_auto=True, kv_reserve_tokens=65536, moe_cache_policy='lru', moe_prefill_overlap=True, moe_prefill_hit_d2d=False, moe_collect_stats=False, moe_cpu_threads=0, moe_cpu_layers=None, moe_hybrid_max_fetch=-1, cuda_graph_bs=None, cuda_graph_max_bs=2, page_size=1, memory_ratio=0.85, linear_state_cache_ratio=2.0, swa_full_tokens_ratio=0.2, swa_num_pages_override=None, distributed_timeout=60.0, use_dummy_weight=False, use_pynccl=True, max_seq_len_override=None, num_page_override=None, num_token_override=65536, max_extend_tokens=2048, cache_type='radix', offline_mode=False, decode_log_interval=40, special_token_ckpt=False, _unique_suffix='.pid=1', server_host='0.0.0.0', server_port=1919, num_tokenizer=0, silent_output=False, shell_mode=False, served_model_name='qwen3.6:35b-nvfp4', tool_call_parser='qwen3_coder', reasoning_parser='qwen3', sampling_defaults='model', max_output_tokens=None, enable_cache_report=False, cors_origins='tauri://localhost,http://tauri.localhost,http://localhost:1420')
+[1m[2026-09-13|00:33:35|FrontendAPI][0m [32mINFO    [0m Default sampling config (source=model): temperature=1.0, top_k=20, top_p=0.95
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:1919 (Press CTRL+C to quit)
+/opt/freetoken-venv/lib/python3.12/site-packages/freetoken/engine/engine.py:1016: FutureWarning: torch.cuda._set_allocator_settings is deprecated. Use torch._C._accelerator_setAllocatorSettings instead.
+  torch.cuda.memory._set_allocator_settings("expandable_segments:True")
+[1m[2026-09-13|00:33:37|core|rank=0][0m [32mINFO    [0m Enabled expandable_segments (override via PYTORCH_ALLOC_CONF)
+[1m[2026-09-13|00:33:37|core|rank=0][0m [32mINFO    [0m Resolved config: moe_backend='offload', attention_backend='triton', cache_type='hybrid_radix', page_size=1
+[1m[2026-09-13|00:33:38|core|rank=0][0m [32mINFO    [0m Free memory before loading model: 31.79 GiB
+/opt/freetoken-venv/lib/python3.12/site-packages/torch/utils/_device.py:116: UserWarning: expandable_segments not supported on this platform (Triggered internally at /pytorch/c10/hip/HIPAllocatorConfig.h:40.)
+  return func(*args, **kwargs)
+Loading mixed-fp8 weights:   0%|          | 0/3 [00:00<?, ?it/s]Loading mixed-fp8 weights:  33%|███▎      | 1/3 [00:00<00:01,  1.60it/s]Loading mixed-fp8 weights:  67%|██████▋   | 2/3 [00:02<00:01,  1.56s/it]Loading mixed-fp8 weights: 100%|██████████| 3/3 [00:03<00:00,  1.27s/it]Loading mixed-fp8 weights: 100%|██████████| 3/3 [00:03<00:00,  1.26s/it]
+[1m[2026-09-13|00:33:42|core|rank=0][0m [32mINFO    [0m expert banks: slow path (serial build)
+Loading Qwen3.5 NVFP4 experts:   0%|          | 0/3 [00:00<?, ?it/s]Loading Qwen3.5 NVFP4 experts:  33%|███▎      | 1/3 [00:08<00:16,  8.39s/it]Loading Qwen3.5 NVFP4 experts:  67%|██████▋   | 2/3 [00:18<00:09,  9.57s/it]Loading Qwen3.5 NVFP4 experts: 100%|██████████| 3/3 [00:20<00:00,  5.97s/it]Loading Qwen3.5 NVFP4 experts: 100%|██████████| 3/3 [00:20<00:00,  6.82s/it]
+[1m[2026-09-13|00:34:06|core|rank=0][0m [32mINFO    [0m NVFP4 expert backend: triton
+[1m[2026-09-13|00:34:06|core|rank=0][0m [32mINFO    [0m --moe-cache-auto resolved moe_cache_size=10240 num_pages=340189 (prefill_overlap=True)
+[1m[2026-09-13|00:34:06|core|rank=0][0m [32mINFO    [0m Allocating 65536 tokens for KV cache, K + V = 1.25 GiB
+[1m[2026-09-13|00:34:06|core|rank=0][0m [32mINFO    [0m Free memory after initialization: 10.00 GiB
+[1m[2026-09-13|00:34:06|core|rank=0][0m [32mINFO    [0m Start capturing HIP graphs with sizes: [1, 2]
+[1m[2026-09-13|00:34:06|core|rank=0][0m [32mINFO    [0m Free GPU memory before capturing HIP graphs: 10.00 GiB
+[1m[2026-09-13|00:34:11|core|rank=0][0m [33mWARNING [0m fused_topk: triton_kernels is not installed -> pure-torch router fallback (numerically equivalent, slower). Expected on Windows (no wheel); on Linux install triton_kernels to restore the fused router.
+Preparing for capturing HIP graphs...:   0%|          | 0/2 [00:00<?, ?batch/s]Capturing graphs: bs = 2   | avail_mem = 10.00 GiB:   0%|          | 0/2 [00:00<?, ?batch/s]Capturing graphs: bs = 2   | avail_mem = 10.00 GiB:  50%|█████     | 1/2 [00:07<00:07,  7.40s/batch]Capturing graphs: bs = 1   | avail_mem = 9.72 GiB:  50%|█████     | 1/2 [00:07<00:07,  7.40s/batch] Capturing graphs: bs = 1   | avail_mem = 9.72 GiB: 100%|██████████| 2/2 [00:09<00:00,  4.50s/batch]Capturing graphs: bs = 1   | avail_mem = 9.72 GiB: 100%|██████████| 2/2 [00:09<00:00,  4.93s/batch]
+[1m[2026-09-13|00:34:16|core|rank=0][0m [32mINFO    [0m HIP graphs captured: sizes=[1, 2], duration_s=10.42, memory_delta=0.31 GiB, free_memory=9.69 GiB
+[1m[2026-09-13|00:34:32|core|rank=0][0m [32mINFO    [0m Prefill warmup complete for lengths [80, 128] in 15.295 s
+[1m[2026-09-13|00:34:32|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+[1m[2026-09-13|00:34:32|FrontendAPI][0m [32mINFO    [0m API server is ready to serve on 0.0.0.0:1919
+[1m[2026-09-13|00:34:34][0m [32mINFO    [0m reasoning-effort profile: supported=['high', 'low', 'max', 'medium', 'minimal', 'none', 'xhigh'] default=None
+[1m[2026-09-13|00:34:55|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 1}, eager={'prefill': 1}
+[1m[2026-09-13|00:34:55|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 30, #cached-token: 0, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 1, #queue-req: 0, input throughput (token/s): 1.30
+GRAPH_EXPERT_STATS {"batch_size": 1, "through_decode_step": 32, "memory_allocated_bytes": 23222036992, "memory_reserved_bytes": 23542628352, "layer_calls": 1280, "active_per_layer": 8.0, "missing_per_layer": 2.18359375, "miss_rate": 0.27294921875}
+[1m[2026-09-13|00:34:56|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 71, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 1.68, #queue-req: 0
+GRAPH_EXPERT_STATS {"batch_size": 1, "through_decode_step": 64, "memory_allocated_bytes": 23222036992, "memory_reserved_bytes": 23542628352, "layer_calls": 1280, "active_per_layer": 8.0, "missing_per_layer": 0.85546875, "miss_rate": 0.10693359375}
+[1m[2026-09-13|00:34:57|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 111, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 66.59, #queue-req: 0
+[1m[2026-09-13|00:34:57|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 151, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 71.70, #queue-req: 0
+GRAPH_EXPERT_STATS {"batch_size": 1, "through_decode_step": 128, "memory_allocated_bytes": 23222036480, "memory_reserved_bytes": 23542628352, "layer_calls": 2560, "active_per_layer": 8.0, "missing_per_layer": 0.362890625, "miss_rate": 0.045361328125}
+[1m[2026-09-13|00:34:58|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 191, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 70.19, #queue-req: 0
+[1m[2026-09-13|00:34:58|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 231, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 70.36, #queue-req: 0
+[1m[2026-09-13|00:34:59|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 271, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 74.49, #queue-req: 0
+[1m[2026-09-13|00:34:59|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 256}, eager={'prefill': 1}
+GRAPH_EXPERT_STATS {"batch_size": 1, "through_decode_step": 256, "memory_allocated_bytes": 23222035968, "memory_reserved_bytes": 23542628352, "layer_calls": 5120, "active_per_layer": 8.0, "missing_per_layer": 0.340625, "miss_rate": 0.042578125}
+[1m[2026-09-13|00:34:59|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 311, token usage: 0.00, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 74.55, #queue-req: 0
+[1m[2026-09-13|00:35:00|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 351, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 75.71, #queue-req: 0
+[1m[2026-09-13|00:35:00|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 391, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 76.16, #queue-req: 0
+[1m[2026-09-13|00:35:01|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 431, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 76.37, #queue-req: 0
+[1m[2026-09-13|00:35:01|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 471, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 76.27, #queue-req: 0
+[1m[2026-09-13|00:35:02|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 511, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 76.32, #queue-req: 0
+[1m[2026-09-13|00:35:02|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 512}, eager={'prefill': 1}
+GRAPH_EXPERT_STATS {"batch_size": 1, "through_decode_step": 512, "memory_allocated_bytes": 23222034944, "memory_reserved_bytes": 23542628352, "layer_calls": 10240, "active_per_layer": 8.0, "missing_per_layer": 0.07255859375, "miss_rate": 0.00906982421875}
+[1m[2026-09-13|00:35:02|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 551, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 75.81, #queue-req: 0
+[1m[2026-09-13|00:35:03|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 591, token usage: 0.01, #mamba-slot: 3/12, mamba usage: 0.25, gen throughput (token/s): 76.38, #queue-req: 0
+INFO:     172.17.0.1:58822 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:35:03|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+[1m[2026-09-13|00:35:17|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 599, 2: 1}, eager={'prefill': 2}
+[1m[2026-09-13|00:35:17|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 2, #new-token: 60, #cached-token: 0, token usage: 0.00, #mamba-slot: 6/12, mamba usage: 0.50, #running-req: 2, #queue-req: 0, input throughput (token/s): 2.81
+[1m[2026-09-13|00:35:17|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 64, token usage: 0.00, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 3.02, #queue-req: 0
+GRAPH_EXPERT_STATS {"batch_size": 2, "through_decode_step": 32, "memory_allocated_bytes": 23222035968, "memory_reserved_bytes": 23542628352, "layer_calls": 1280, "active_per_layer": 12.9703125, "missing_per_layer": 0.40859375, "miss_rate": 0.031502228647150944}
+[1m[2026-09-13|00:35:17|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 144, token usage: 0.00, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 107.88, #queue-req: 0
+GRAPH_EXPERT_STATS {"batch_size": 2, "through_decode_step": 64, "memory_allocated_bytes": 23222035456, "memory_reserved_bytes": 23542628352, "layer_calls": 1280, "active_per_layer": 14.20625, "missing_per_layer": 0.02734375, "miss_rate": 0.001924769027716674}
+[1m[2026-09-13|00:35:18|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 224, token usage: 0.00, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.43, #queue-req: 0
+[1m[2026-09-13|00:35:19|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 304, token usage: 0.00, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.78, #queue-req: 0
+GRAPH_EXPERT_STATS {"batch_size": 2, "through_decode_step": 128, "memory_allocated_bytes": 23222034944, "memory_reserved_bytes": 23542628352, "layer_calls": 2560, "active_per_layer": 14.523828125, "missing_per_layer": 0.0140625, "miss_rate": 0.000968236464861085}
+[1m[2026-09-13|00:35:20|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 384, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.90, #queue-req: 0
+[1m[2026-09-13|00:35:20|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 464, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.77, #queue-req: 0
+[1m[2026-09-13|00:35:21|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 544, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.71, #queue-req: 0
+[1m[2026-09-13|00:35:21|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 599, 2: 256}, eager={'prefill': 2}
+GRAPH_EXPERT_STATS {"batch_size": 2, "through_decode_step": 256, "memory_allocated_bytes": 23222033920, "memory_reserved_bytes": 23542628352, "layer_calls": 5120, "active_per_layer": 14.108203125, "missing_per_layer": 0.041015625, "miss_rate": 0.0029072182074923168}
+[1m[2026-09-13|00:35:22|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 624, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 107.88, #queue-req: 0
+[1m[2026-09-13|00:35:22|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 704, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.34, #queue-req: 0
+[1m[2026-09-13|00:35:23|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 784, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.38, #queue-req: 0
+[1m[2026-09-13|00:35:24|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 864, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 107.87, #queue-req: 0
+[1m[2026-09-13|00:35:25|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 944, token usage: 0.01, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 109.24, #queue-req: 0
+[1m[2026-09-13|00:35:25|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1024, token usage: 0.02, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 109.55, #queue-req: 0
+[1m[2026-09-13|00:35:26|core|rank=0][0m [32mINFO    [0m HIP graph execution: replays={1: 599, 2: 512}, eager={'prefill': 2}
+GRAPH_EXPERT_STATS {"batch_size": 2, "through_decode_step": 512, "memory_allocated_bytes": 23222031872, "memory_reserved_bytes": 23542628352, "layer_calls": 10240, "active_per_layer": 14.400390625, "missing_per_layer": 0.02705078125, "miss_rate": 0.0018784755187847553}
+[1m[2026-09-13|00:35:26|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1104, token usage: 0.02, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 108.24, #queue-req: 0
+[1m[2026-09-13|00:35:27|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 2, #token: 1184, token usage: 0.02, #mamba-slot: 6/12, mamba usage: 0.50, gen throughput (token/s): 107.68, #queue-req: 0
+INFO:     172.17.0.1:53126 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     172.17.0.1:53134 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:35:28|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+[1m[2026-09-13|00:35:30|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.06, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 0, #queue-req: 1, input throughput (token/s): 150.50
+[1m[2026-09-13|00:35:31|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 2048, #cached-token: 0, token usage: 0.07, #mamba-slot: 3/12, mamba usage: 0.25, #running-req: 1, #queue-req: 0, input throughput (token/s): 1965.53
+[1m[2026-09-13|00:35:31|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 434, #cached-token: 0, token usage: 0.07, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 23819.61
+[1m[2026-09-13|00:35:31|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 4533, token usage: 0.07, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 17.95, #queue-req: 0
+INFO:     172.17.0.1:45482 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:35:32|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+[1m[2026-09-13|00:35:32|core|rank=0][0m [32mINFO    [0m Prefill batch, #new-seq: 1, #new-token: 50, #cached-token: 4480, token usage: 0.07, #mamba-slot: 4/12, mamba usage: 0.33, #running-req: 1, #queue-req: 0, input throughput (token/s): 43.07
+[1m[2026-09-13|00:35:33|core|rank=0][0m [32mINFO    [0m Decode batch, #running-req: 1, #token: 4542, token usage: 0.07, #mamba-slot: 4/12, mamba usage: 0.33, gen throughput (token/s): 31.01, #queue-req: 0
+INFO:     172.17.0.1:57978 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[1m[2026-09-13|00:35:33|core|rank=0][0m [32mINFO    [0m Scheduler is idle, waiting for new reqs...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1]

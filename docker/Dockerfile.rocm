@@ -10,6 +10,7 @@ ENV PYTHONUNBUFFERED=1 \
     TVM_FFI_ROCM_ARCH_LIST=gfx1201 \
     MAX_JOBS=2 \
     FREETOKEN_DISABLE_KERNEL_CACHE=1 \
+    TVM_FFI_CACHE_DIR=/root/.cache/tvm-ffi-hip-graphs-v1 \
     HF_HOME=/root/.cache/huggingface \
     MODEL_PATH=Qwen/Qwen3-0.6B \
     SERVED_MODEL_NAME=Qwen3-0.6B \
@@ -42,6 +43,7 @@ RUN python -m pip install --no-cache-dir --no-build-isolation --no-deps . \
 
 COPY docker/entrypoint.sh /usr/local/bin/freetoken-entrypoint
 COPY scripts/rocm-smoke.py /usr/local/bin/freetoken-rocm-smoke
+COPY scripts/rocm-graph-smoke.py /usr/local/bin/freetoken-rocm-graph-smoke
 RUN chmod +x /usr/local/bin/freetoken-entrypoint
 
 EXPOSE 1919

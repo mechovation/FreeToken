@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gc
+import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Dict, List
 
@@ -118,6 +119,9 @@ class GraphRunner:
         self.moe_offload_cache = moe_offload_cache
         self.stream = stream
         self.device = device
+        self.runtime_backend = "HIP" if torch.version.hip else "CUDA"
+        self.replay_counts: Dict[int, int] = {}
+        self.eager_counts: Dict[str, int] = {}
         self._capture_graphs(max_seq_len, vocab_size, model)
 
     def _reset_moe_offload_cache(self) -> None:
@@ -130,10 +134,12 @@ class GraphRunner:
         # loader would sit at 100% (last byte bar) until the ready ack. total=0 ⇒ the desktop
         # reads it as an indeterminate phase and animates the bar. Must precede the
         # graphs-disabled early return so that config gets the phase too.
-        emit_progress("Capturing CUDA graphs / warming up", 0, 0)
+        backend = self.runtime_backend
+        started = time.perf_counter()
+        emit_progress(f"Capturing {backend} graphs / warming up", 0, 0)
         self.graph_map: Dict[int, torch.cuda.CUDAGraph] = {}
         if self.max_graph_bs == 0:
-            return logger.info_rank0("CUDA graph is disabled.")
+            return logger.info_rank0(f"{backend} graph is disabled.")
 
         self.attn_backend.init_capture_graph(max_seq_len=max_seq_len, bs_list=self.graph_bs_list)
 
@@ -141,16 +147,17 @@ class GraphRunner:
         torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats(self.device)
 
-        logger.info_rank0(f"Start capturing CUDA graphs with sizes: {self.graph_bs_list}")
+        logger.info_rank0(f"Start capturing {backend} graphs with sizes: {self.graph_bs_list}")
         free_memory = get_free_memory(self.device)
-        logger.info_rank0(f"Free GPU memory before capturing CUDA graphs: {mem_GB(free_memory)}")
+        memory_before = free_memory
+        logger.info_rank0(f"Free GPU memory before capturing {backend} graphs: {mem_GB(free_memory)}")
 
         self.buffer = GraphCaptureBuffer.init(self.max_graph_bs, vocab_size, self.device)
         self._reset_moe_offload_cache()
 
         pbar = tqdm(
             sorted(self.graph_bs_list, reverse=True),
-            desc="Preparing for capturing CUDA graphs...",
+            desc=f"Preparing for capturing {backend} graphs...",
             unit="batch",
             disable=not get_tp_info().is_primary(),  # disable for non-primary ranks
         )
@@ -175,8 +182,11 @@ class GraphRunner:
                 self.buffer.logits[:bs] = model.forward()
                 # Keep the offload cache warmed for capture. Resetting here forces
                 # CUDA graph capture to replay cold-cache expert copies.
-                with torch.cuda.graph(graph, pool=pool, stream=self.stream):
-                    self.buffer.logits[:bs] = model.forward()
+                try:
+                    with torch.cuda.graph(graph, pool=pool, stream=self.stream):
+                        self.buffer.logits[:bs] = model.forward()
+                except Exception as exc:
+                    raise RuntimeError(f"{backend} graph capture failed at batch size {bs}") from exc
                 self._reset_moe_offload_cache()
             if pool is None:
                 pool = graph.pool()  # reuse cuda graph handle to reduce memory
@@ -184,7 +194,12 @@ class GraphRunner:
 
         self._reset_moe_offload_cache()
         free_memory = get_free_memory(self.device)
-        logger.info_rank0(f"Free GPU memory after capturing CUDA graphs: {mem_GB(free_memory)}")
+        logger.info_rank0(
+            f"{backend} graphs captured: sizes={sorted(self.graph_map)}, "
+            f"duration_s={time.perf_counter() - started:.2f}, "
+            f"memory_delta={mem_GB(memory_before - free_memory)}, "
+            f"free_memory={mem_GB(free_memory)}"
+        )
 
     def can_use_cuda_graph(self, batch: Batch) -> bool:
         return batch.is_decode and batch.size <= self.max_graph_bs
@@ -195,7 +210,25 @@ class GraphRunner:
         g = self.graph_map[batch.padded_size]
         self.attn_backend.prepare_for_replay(batch)
         g.replay()
+        bs = batch.padded_size
+        self.replay_counts[bs] = self.replay_counts.get(bs, 0) + 1
+        # No GPU reads or synchronization in the serving path. The first replay
+        # and periodic aggregates distinguish actual use from capture alone.
+        if self.replay_counts[bs] == 1 or self.replay_counts[bs] % 256 == 0:
+            self.log_execution_counts()
         return self.buffer.logits[: batch.size]
+
+    def record_eager(self, batch: Batch) -> None:
+        reason = "prefill" if not batch.is_decode else (
+            "decode_disabled" if not self.max_graph_bs else "decode_batch_too_large"
+        )
+        self.eager_counts[reason] = self.eager_counts.get(reason, 0) + 1
+
+    def log_execution_counts(self) -> None:
+        logger.info_rank0(
+            f"{self.runtime_backend} graph execution: replays={self.replay_counts}, "
+            f"eager={self.eager_counts}"
+        )
 
     def pad_batch(self, batch: Batch) -> None:
         padded_size = (  # choose the first available batch size
@@ -207,6 +240,7 @@ class GraphRunner:
 
     # NOTE: This must be called before freeing NCCL resources to prevent program hang
     def destroy_cuda_graphs(self) -> None:
+        self.log_execution_counts()
         # Drop the CUDAGraph objects (and the shared mempool they hold) AND the static
         # GraphCaptureBuffer tensors ([max_bs, vocab] logits + input/out_loc/positions/...).
         # Dropping the references is the load-bearing step; without it a runtime rebuild's

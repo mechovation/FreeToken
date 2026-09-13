@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-13",
+  "base_commit": "31142952bb575b50999bb8798509a4653298a1d6",
+  "source_hashes": {
+    "python/freetoken/engine/engine.py": "2600f74077ebaf75f5daeaaca9ae5b7f4f2a0659bcbb842ef402315e8382bc23",
+    "python/freetoken/engine/graph.py": "1c57dc234808fd3cf14a2d08d1aa8a3c739574af343a99c689cd543c4aab78b3",
+    "docker/Dockerfile.hip-graphs": "5747a9ae353049673f90d9b3ee66e8260aeecad5f09ec4414b157bc186b02cad",
+    "scripts/rocm-graph-smoke.py": "1dc45bff067e4d72d88d58c8d59809c54fd4f84f0ec84b66298a84b248413918",
+    "scripts/graph-validation/sitecustomize.py": "99302fa30cd0f12638b442a4fa5c74290c6578b73ca748c4514b086672fba9a3"
+  },
+  "base_image": "sha256:ea615282bb56801e3aaf09a63bd6f8424c39f362113bff4d7b15be9b5f851b21",
+  "candidate_image": "sha256:e03edc33baca7fdbb5eb1c88b79bc406e373833c494d80a7238b7a4d69101340",
+  "torch": "2.11.0+rocm7.2",
+  "hip": "7.2.26015",
+  "triton": "3.6.0",
+  "initial_services": {
+    "freetoken-rocm": "stopped",
+    "freetoken-nvidia": "running, 64K graph2",
+    "llama-swap": "running, Qwen3.6 GGUF loaded",
+    "llama-swap-nvidia": "running; unchanged"
+  },
+  "validation": {
+    "smoke": "100 changing replays per batch size 1,2 passed",
+    "graph_cpu_oracle": "200 replays passed",
+    "expert_graph_dequant_oracle": "100 replays per batch size 1,2 passed",
+    "attention_graph_oracle": "100 replays passed",
+    "full_model": "32 decode steps per batch size 1,2; logits and KV/GDN compared",
+    "serving_requests": 103,
+    "rebuilds": 3,
+    "invalid_rebuild": "rejected, still serves",
+    "cancellation": "subsequent generation passed",
+    "cuda_replay_tests": 5,
+    "cuda_cache_rebuild_e2e": 1,
+    "gdn_recurrence_hip_tests": 2,
+    "gdn_recurrence_cuda_tests": 2,
+    "gdn_replays_per_test": 100,
+    "prefix_reused_tokens": 4480,
+    "benchmark_short_configurations": 8,
+    "benchmark_measured_batches": 80,
+    "benchmark_long_samples": 4,
+    "final_default_actual_kv_tokens": 340189,
+    "final_default_expert_slots": 10240
+  },
+  "notes": [
+    "Graph capture worked in the unchanged image. No HIP graph algorithm defect found.",
+    "The initial scalar host-copy smoke hit a stale JIT binary; fresh namespace passed.",
+    "Early diagnostic harness failures are preserved in validation logs.",
+    "Profiler traces contain hipGraphLaunch, but not a full graph-kernel time breakdown.",
+    "The initial GDN test compared physical [V,K] state directly to the [K,V] mathematical reference; transposing for the documented kernel addressing fixed the oracle, with unchanged tolerances. Both backends passed."
+  ],
+  "reproduction_script_hashes": {
+    "scripts/benchmark-hip-graphs.py": "e6f9c3dc0251587578cda8837900b40324eb333f8a0f369365ed3b79a314c239",
+    "scripts/graph-validation/sitecustomize.py": "dc8064b29f074d2dd8b860e9e1051e8ff4077fab8a84786fcd1d173056549e6c",
+    "tests/engine/test_graph_replay.py": "9581b2856b6cbc4ad9d9c845c2f4ac9edd5db15b5a25ae452a0840b18fe09841"
+  }
+}

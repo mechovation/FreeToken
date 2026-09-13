@@ -1,0 +1,162 @@
+{
+  "amd_health": {
+    "status": "ok",
+    "model": "Qwen3.6-35B-A3B-NVFP4",
+    "instance_id": "d3819975-cd8e-424b-8e7b-8ba1700fb689",
+    "uptime_s": 36,
+    "maintenance": "serving",
+    "version": "0.1.2"
+  },
+  "amd_geometry": {
+    "state": "serving",
+    "last_rebuild": null,
+    "geometry": {
+      "num_pages": 340189,
+      "page_size": 1,
+      "moe_cache_size": 10240,
+      "num_mamba_slots": 12,
+      "num_experts": 256,
+      "num_moe_layers": 40,
+      "moe_cache_policy": "lru",
+      "unit_bytes": {
+        "kv_per_token": 20480,
+        "moe_per_expert": 1775616,
+        "mamba_per_slot": 64389120,
+        "swa_per_token": 0
+      },
+      "swa_full_tokens_ratio": 0.0,
+      "swa_page_size": 0,
+      "num_swa_pages": 0,
+      "cache_budget_bytes": 25986439577,
+      "reasoning": null,
+      "limits": {
+        "kv_tokens": {
+          "min": 1,
+          "max": 1268869
+        },
+        "moe_experts": {
+          "min": 256,
+          "max": 10240
+        },
+        "mamba_slots": {
+          "min": 8,
+          "max": 403
+        },
+        "swa_tokens": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  },
+  "single": {
+    "id": "chatcmpl-0",
+    "object": "chat.completion",
+    "created": 1789259912,
+    "model": "Qwen3.6-35B-A3B-NVFP4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To explain why the Moon has phases, we must look at the geometric relationship between the Sun, the Earth, and the Moon, as well as the physics of how light behaves.\n\nHere is the step-by-step logical deduction of the phenomenon.\n\n### 1. The Source of Light (The Sun)\nThe Moon is a dark, rocky body. It does not generate its own light. The only reason we can see the Moon is because it reflects sunlight.\n"
+        },
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 21,
+      "completion_tokens": 95,
+      "total_tokens": 116
+    }
+  },
+  "concurrent": [
+    {
+      "id": "chatcmpl-1",
+      "object": "chat.completion",
+      "created": 1789259927,
+      "model": "Qwen3.6-35B-A3B-NVFP4",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "To explain why the Moon has phases, we must look at the geometric relationship between the Sun, the Earth, and the Moon, as well as the physics of how light behaves.\n\nHere is the step-by-step logical deduction of the phenomenon.\n\n### 1. The Source of Light (The Sun)\nThe Moon is a dark, rocky body. It does not generate its own light. The only reason we can see the Moon is because it reflects sunlight.\n"
+          },
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 21,
+        "completion_tokens": 95,
+        "total_tokens": 116
+      }
+    },
+    {
+      "id": "chatcmpl-2",
+      "object": "chat.completion",
+      "created": 1789259927,
+      "model": "Qwen3.6-35B-A3B-NVFP4",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "To explain why the Moon has phases, we must look at the geometric relationship between the Sun, the Earth, and the Moon, as well as the physics of how light behaves.\n\nHere is the step-by-step logical deduction of the phenomenon.\n\n### 1. The Source of Light (The Sun)\nThe Moon does not produce its own light. It is a dark, rocky body. The only reason we can see the Moon is because it reflects sunlight.\n"
+          },
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 21,
+        "completion_tokens": 95,
+        "total_tokens": 116
+      }
+    }
+  ],
+  "restored_nvidia_health": {
+    "status": "ok",
+    "model": "qwen3.6:35b-nvfp4",
+    "instance_id": "541c34d4-e757-4dcb-865b-dac4c0f67876",
+    "uptime_s": 0,
+    "maintenance": "serving",
+    "version": "0.1.2"
+  },
+  "restored_llama_swap_response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "ready"
+        }
+      }
+    ],
+    "created": 1789260022,
+    "model": "qwen3.6:35b",
+    "system_fingerprint": "b10920-eafe15a5e",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 2,
+      "prompt_tokens": 18,
+      "total_tokens": 20,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-YLEne44qP1T7UoKnKluHj4fiq3QfZr1E",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 18,
+      "prompt_ms": 107.464,
+      "prompt_per_token_ms": 5.9702222222222225,
+      "prompt_per_second": 167.4979528027991,
+      "predicted_n": 2,
+      "predicted_ms": 16.687,
+      "predicted_per_token_ms": 16.687,
+      "predicted_per_second": 59.92688919518187
+    }
+  },
+  "final_containers": "freetoken-rocm\tExited (0) About a minute ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-expert-stats\tExited (0) 4 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv65536-g0-r2\tExited (0) 8 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv65536-g2-r2\tExited (0) 13 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv65536-g2-r1\tExited (0) 17 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv65536-g0-r1\tExited (0) 19 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv262144-g0-r2\tExited (0) 23 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv262144-g2-r2\tExited (0) 26 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv262144-g2-r1\tExited (0) 28 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-kv262144-g0-r1\tExited (0) 31 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-validation\tExited (0) 35 minutes ago\tfreetoken:rocm-hip-graphs\nfreetoken-hip-test\tExited (0) 42 minutes ago\tfreetoken:rocm-gfx1201\nfreetoken-nvidia\tUp About a minute\tfreetoken:cuda13\nllama-swap\tUp About a minute (healthy)\tllama-swap:vulkan-b10920\ntwingate-polar-hound\tUp 9 hours (healthy)\ttwingate/connector:1\nllama-swap-nvidia\tUp 9 hours\td630ff31f1ca\nopen-webui\tUp 9 hours (healthy)\tghcr.io/open-webui/open-webui:main\ntailscale\tUp 16 seconds\ttailscale/tailscale:latest\nsoft-serve\tUp 9 hours\tcharmcli/soft-serve:latest\ncaddy\tUp 9 hours\t22c1de444a7d\nactual-actual-1\tUp 9 hours\tactualbudget/actual-server:latest\nhf-download\tUp 9 hours\t3b8315afc69f\npostgis-oc\tUp 9 hours (healthy)\tpostgis/postgis:16-3.4\nar-mcp\tUp 9 hours\tadventure-road-adventure-road-mcp\nar-bot\tUp 9 hours\tadventure-road-adventure-road-bot\nfooocus-app-1\tExited (137) 4 months ago\tghcr.io/lllyasviel/fooocus\nollama\tExited (0) 4 months ago\tollama/ollama:latest\nsocket-proxy\tUp 9 hours\ttecnativa/docker-socket-proxy\nllm-inference-calculator\tExited (0) 5 months ago\tllm-inference-calculator-llm-inference-calculator\nphoton-docker\tExited (0) 4 months ago\tghcr.io/rtuszik/photon-docker:latest\nwyoming-kokoro\tExited (137) 4 months ago\tghcr.io/roryeckel/wyoming_openai:latest\ngpu-kokoro-tts-1\tExited (1) 6 months ago\tgpu-kokoro-tts\n"
+}

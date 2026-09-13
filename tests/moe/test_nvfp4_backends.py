@@ -358,6 +358,51 @@ def _triton_cache(device, *, cache_size=S, prefill_overlap=False):
 
 
 @cuda
+@pytest.mark.parametrize("bs", [1, 2])
+def test_triton_graph_decode_cold_hits_and_evictions(bs):
+    """Actual capture: routes and six host-bank copies must change on replay."""
+    from freetoken.moe.fused_nvfp4 import fused_experts_decode_nvfp4_marlin
+
+    device = torch.device("cuda")
+    cache, sources = _triton_cache(device)
+    ids = torch.zeros(bs, TOPK, dtype=torch.int32, device=device)
+    hidden = torch.ones(bs, H, dtype=torch.bfloat16, device=device) / 4
+    weights = torch.full((bs, TOPK), 0.5, device=device)
+
+    def forward():
+        # Two captured layers share eight slots for sixteen distinct experts.
+        result = []
+        for layer in range(L):
+            slots = ids.clone()
+            cache.ensure_experts(layer, slots)
+            cache.copy_missing()
+            result.append(fused_experts_decode_nvfp4_marlin(
+                hidden, *cache.bank_views(), weights, slots, "silu", False))
+        return result
+
+    stream = torch.cuda.Stream()
+    stream.wait_stream(torch.cuda.current_stream())
+    with torch.cuda.stream(stream):
+        for _ in range(3):
+            forward()
+    torch.cuda.current_stream().wait_stream(stream)
+    torch.cuda.synchronize()
+    graph = torch.cuda.CUDAGraph()
+    with torch.cuda.graph(graph, stream=stream):
+        outputs = forward()
+    cache.reset()  # first replay is cold, although capture had warm hits
+    for step in range(100):
+        # Repeat routes once for hits, then move through all experts for eviction.
+        routes = (torch.arange(bs * TOPK).reshape(bs, TOPK) + step // 2) % E
+        ids.copy_(routes)
+        hidden.fill_(0.01 * (1 + step % 11))
+        graph.replay()
+        torch.cuda.synchronize()
+        for layer, output in enumerate(outputs):
+            _assert_close(output, _ref_moe(sources, layer, hidden, weights, routes))
+
+
+@cuda
 def test_triton_decode_marlin_matches_dequant_reference_after_prefill_stomp():
     """The production marlin-style int32 decode GEMV through the slot cache, including the
     request-B-after-request-A pattern (a layer-1 full-layer prefill between two layer-0
